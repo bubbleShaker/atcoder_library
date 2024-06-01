@@ -36,7 +36,7 @@ class SegTree{
   //半開区間[l,r)の最大値を求める
   //u:現在のセル番号、[a,b):セルに対応する半開区間、[l,r):求めたい半開区間
   //半開区間[l,r)の最大値を求めるにはquery(l,r,1,siz+1,1)を呼び出せばよい
-  int query(int l,int r,int a,int b,int u){
+  T query(int l,int r,int a,int b,int u){
     //一切含まれない場合
     if(r<=a||b<=l){
       return -INF;
@@ -49,6 +49,9 @@ class SegTree{
     T leftAns=query(l,r,a,m,u*2);
     T rightAns=query(l,r,m,b,u*2+1);
     return max(leftAns,rightAns);
+  }
+  T calcQuery(int l,int r){
+    return query(l,r,1,siz+1,1);
   }
   int getSiz(){
     return siz;
