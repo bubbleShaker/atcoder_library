@@ -1,0 +1,617 @@
+{
+	"main":{
+		"prefix":"main",
+		"body":[
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			"int main(){",
+			"\t$1",
+			"}"
+		],
+		"description":"main関数"
+	},
+	"ci":{
+		"prefix":"ci",
+		"body":[
+			"${1:int} ${2:n}",
+			"cin>>${2:n};"
+		],
+		"description": "標準入力"
+	},
+	"ci2":{
+		"prefix":"ci2",
+		"body":[
+			"${1:int} ${2:n},${3:m}",
+			"cin>>${4:n}>>${5:m};"
+		],
+		"description": "2変数の標準入力"
+	},
+	"ci3":{
+		"prefix":"ci3",
+		"body":[
+			"${1:int} ${2:n},${3:m},${4:k}",
+			"cin>>${5:n}>>${6:m}>>${7:k};"
+		],
+		"description": "3変数の標準入力"
+	},
+	"cive":{
+		"prefix":"cive",
+		"body":[
+			"vector<${1:int}> ${2:vec}(${3:n});",
+			"for(auto &&in:${2:vec}){",
+			"\tcin>>in",
+			"}"
+		],
+		"description":"vectorの標準入力"
+	},
+	"cive2":{
+		"prefix":"cive2",
+		"body":[
+			"vector<vector<${1:int}>> ${2:vec}(${3:n},vector<${1:int}>(${4:m}));",
+			"for(auto &&row:${2:vec}){",
+			"\tfor(auto &&in:row){",
+			"\t\tcin>>in;",
+			"}"
+		],
+		"description":"2次元vectorの標準入力"
+	},
+	"co":{
+		"prefix":"co",
+		"body":[
+			"cout<<${1:n}<<'\\n';"
+		],
+		"description": "標準出力"
+	},
+	"co2":{
+		"prefix":"co2",
+		"body":[
+			"cout<<${1:n}<<' '<<${2:m}<<'\\n';"
+		],
+		"description": "2変数の標準出力"
+	},
+	"cove":{
+		"prefix":"cove",
+		"body":[
+			"for(auto out=${1:vec}.begin();out!=${1:vec}.end();out++){",
+			"\tcout<<*out<<((out!=--${1:vec}.end())?' ':'\\n')",
+			"}"
+		],
+		"description": "vectorの標準出力"
+	},
+	"cove2":{
+		"prefix":"cove2",
+		"body":[
+			"for(auto &&row:${1:vec}){",
+			"\tfor(auto out=row.begin();out!=row.end();out++){",
+			"\t\tcout<<*out<<((out!=--row.end())?' ':'\\n')",
+			"\t}",
+			"}"
+		],
+		"description": "2次元vectorの標準出力"
+	},
+	"coyesno":{
+		"prefix":"coyesno",
+		"body":[
+			"cout<<((${1:condition})?\"Yes\":\"No\")<<'\\n';"
+		],
+		"description": "YesNoの出力"
+	},
+	"coaccuracy":{
+		"prefix":"coaccuracy",
+		"body":[
+			"cout<<fixed<<setprecision(10);"
+		],
+		"description": "setpresicionの指定"
+	},
+	"cobool":{
+		"prefix":"cobool",
+		"body":[
+			"cout<<boolalpha;"
+		],
+		"description": "boolalphaの設定。bool値を文字列として出力できる。https://cpprefjp.github.io/reference/ios/boolalpha.html"
+	},
+	"copad":{
+		"prefix":"copad",
+		"body":[
+			"cout<<setfill('0')<<setw(${1:length})<<${2:out}<<'\\n';"
+		],
+		"description": "パディングして数値を出力できる。https://cpprefjp.github.io/reference/iomanip/setfill.html"
+	},
+	"coflush":{
+		"prefix":"coflush",
+		"body":[
+			"cout<<flush;"
+		],
+		"description": "flushの出力"
+	},
+	"int":{
+		"prefix":"i",
+		"body":[
+			"int"
+		],
+		"description": "intの出力"
+	},
+	"long long":{
+		"prefix":"ll",
+		"body":[
+			"long long"
+		],
+		"description": "long longの出力"
+	},
+	"vector":{
+		"prefix":"ve",
+		"body":[
+			"vector<${1:int}>"
+		],
+		"description": "vector型の出力"
+	},
+	"vector<vector<int>>":{
+		"prefix":"ve2",
+		"body":[
+			"vector<vector<${1:int}>>"
+		],
+		"description": "2次元vector型の出力"
+	},
+	"set":{
+		"prefix":"st",
+		"body":[
+			"set<${1:int}>"
+		],
+		"description": "set型の出力"
+	},
+	"unordered_set":{
+		"prefix":"ust",
+		"body":[
+			"unordered_set<${1:int}>"
+		],
+		"description": "unordered_set型の出力"
+	},
+	"multiset":{
+		"prefix":"mst",
+		"body":[
+			"multiset<${1:int}>"
+		],
+		"description": "multiset型の出力"
+	},
+	"map":{
+		"prefix":"mp",
+		"body":[
+			"map<${1:int},${2:int}>"
+		],
+		"description": "map型の出力"
+	},
+	"unordered_map":{
+		"prefix":"ump",
+		"body":[
+			"unordered_map<${1:int},${2:int}>"
+		],
+		"description": "unordered_map型の出力"
+	},
+	"stack":{
+		"prefix":"stk",
+		"body":[
+			"stack<${1:int}>"
+		],
+		"description": "stack型の出力"
+	},
+	"queue":{
+		"prefix":"que",
+		"body":[
+			"queue<${1:int}>"
+		],
+		"description": "queue型の出力"
+	},
+	"priority_queue":{
+		"prefix":"pq",
+		"body":[
+			"priority_queue<${1:int}>"
+		],
+		"description": "priority_queue型の出力"
+	},
+	"heap_queue":{
+		"prefix":"hq",
+		"body":[
+			"priority_queue<${1:int},vector<${1:int}>,greater<${1:int}>>"
+		],
+		"description": "heap_queue型の出力"
+	},
+	"vecsized":{
+		"prefix":"vecsized",
+		"body":[
+			"vector<${1:int}> ${2:a}(${3:n});"
+		],
+		"description": "vector型のサイズ付き出力"
+	},
+	"vec2sized":{
+		"prefix":"vecsized2",
+		"body":[
+			"vector<vector<${1:int}>> ${2:a}(${3:n},vector<${1:int}>(${4:m}));"
+		],
+		"description": "2次元vector型のサイズ付き出力"
+	},
+	"INFi":{
+		"prefix":"infi",
+		"body":[
+			"const int INF=1e9;"
+		],
+		"description": "INFiの出力"
+	},
+	"INFll":{
+		"prefix":"infll",
+		"body":[
+			"const long long INF=1e18;"
+		],
+		"description": "INFllの出力"
+	},
+	"dxdy":{
+		"prefix":"dxdy",
+		"body":[
+			"const vector<int> dx={-1,0,1,0};",
+			"const vector<int> dy={0,1,0,-1};"
+		],
+		"description": "dxdyの出力"
+	},
+	"dxdy8":{
+		"prefix":"dxdy8",
+		"body":[
+			"const vector<int> dx={-1,-1,0,1,1,1,0,-1};",
+			"const vector<int> dy={0,1,1,1,0,-1,-1,-1};"
+		],
+		"description": "dxdy8の出力"
+	},
+	"for":{
+		"prefix":"for",
+		"body":[
+			"for(${1:int} ${2:i}=0;${2:i}<${3:n};${2:i}++){",
+			"\t$4",
+			"}"
+		],
+		"description": "for文"
+	},
+	"forr":{
+		"prefix":"forr",
+		"body":[
+			"for(${1:int} ${2:i}=${3:n}-1;${2:i}>=0;${2:i}--){",
+			"\t$4",
+			"}"
+		],
+		"description": "逆向きfor文"
+	},
+	"forrange":{
+		"prefix":"forrange",
+		"body":[
+			"for(auto &&${1:num}:${2:vec}){",
+			"\t$3",
+			"}"
+		],
+		"description": "forrange"
+	},
+	"lf":{
+		"prefix":"lf",
+		"body":[
+			"'\\n'"
+		],
+		"description": "改行文字"
+	},
+	"lforspace":{
+		"prefix":"lforspace",
+		"body":[
+			"((${1:condition})?' ':'\\n')"
+		],
+		"description": "空白or改行文字"
+	},
+	"all":{
+		"prefix":"all",
+		"body":[
+			"${1:vec}.begin(),${2:vec}.end()"
+		],
+		"description": "イテレータ全範囲"
+	},
+	"chmax":{
+		"prefix":"chmax",
+		"body":[
+			"${1:max}=max(${1:max},${2:target});"
+		],
+		"description": "chmax"
+	},
+	"chmin":{
+		"prefix":"chmin",
+		"body":[
+			"${1:min}=max(${1:min},${2:target});"
+		],
+		"description": "chmin"
+	},
+	"popcount":{
+		"prefix":"popcount",
+		"body":[
+			"__builtin_popcount(${1:value})"
+		],
+		"description": "popcount"
+	},
+	"popcountll":{
+		"prefix":"popcountll",
+		"body":[
+			"__builtin_popcountll(${1:value})"
+		],
+		"description": "popcountll"
+	},
+	"lamda":{
+		"prefix":"lamda",
+		"body":[
+			"[&]($1){$2};"
+		],
+		"description": "lamdaname"
+	},
+	"lamdaname":{
+		"prefix":"lamdaname",
+		"body":[
+			"auto ${1:name}=[&]($2){",
+			"\t$3",
+			"};"
+		],
+		"description": "lamdaname"
+	},
+	"binarysearch":{
+		"prefix":"binarysearch",
+		"body":[
+			"auto isOk=[&](${1:type} mid){",
+			"\t",
+			"};",
+			"${1:type} ok=${2:okbound};",
+			"${1:type} ng=${3:ngbound};",
+			"while(abs(ok-ng)>1){",
+			"\t${1:type} mid=(ok+ng)/2;",
+			"\tif(isOk(mid)){",
+			"\t\tok=mid;",
+			"\t}else{",
+			"\t\tng=mid;",
+			"\t}",
+			"}"
+		],
+		"description": "binarysearch"
+	},
+	"acl":{
+		"prefix":"acl",
+		"body":[
+			"#include <atcoder/${1|fenwicktree,segtree,lazysegtree,string,math,convolution,modint,dsu,maxflow,mincostflow,scc,twosat|}>",
+			"using namespace atcoder;"
+		],
+		"description": "acl"
+	},
+	"mint":{
+		"prefix":"mint",
+		"body":[
+			"using mint=modint${1|998244353,1000000007|};"
+		],
+		"description": "mint"
+	},
+	"SegTreeRMQ":{
+		"prefix":"segtreeRMQ",
+		"body":[
+			"template<typename T>",
+			"class SegTree{",
+			"\tprivate:",
+			"\t//配列の要素数",
+			"\tint n;",
+			"\t//木のノード",
+			"\tvector<T> node;",
+			"\t//ノード1の要素数",
+			"\tint siz;",
+			"\tconst T INF=1e9;",
+			"\tvoid init(){",
+			"\t\t//sizをn以上の最小の2冪数にする",
+			"\t\tsiz=1;",
+			"\t\t//nodeのサイズ",
+			"\t\tint m=1;",
+			"\t\twhile(siz<n){",
+			"\t\t\tsiz*=2;",
+			"\t\t\tm+=siz;",
+			"\t\t}",
+			"\t\t//nodeの数を初期化",
+			"\t\tnode.resize(m);",
+			"\t}",
+			"\tpublic:",
+			"\tSegTree(int num):n(num){",
+			"\t\tinit();",
+			"\t}",
+			"\t//a[pos]をxに更新",
+			"\tvoid update(int pos,T x){",
+			"\t\tpos=pos+siz-1;",
+			"\t\tnode[pos]=x;",
+			"\t\twhile(pos>=2){",
+			"\t\t\tpos/=2;",
+			"\t\t\tnode[pos]=max(node[pos*2],node[pos*2+1]);",
+			"\t\t}",
+			"\t}",
+			"\t//半開区間[l,r)の最大値を求める",
+			"\t//u:現在のセル番号、[a,b):セルに対応する半開区間、[l,r):求めたい半開区間",
+			"\t//半開区間[l,r)の最大値を求めるにはquery(l,r,1,siz+1,1)を呼び出せばよい",
+			"\tT query(int l,int r,int a,int b,int u){",
+			"\t\t//一切含まれない場合",
+			"\t\tif(r<=a||b<=l){",
+			"\t\t\treturn -INF;",
+			"\t\t}",
+			"\t\t//完全に含まれる場合",
+			"\t\tif(l<=a&&b<=r){",
+			"\t\t\treturn node[u];",
+			"\t\t}",
+			"\t\tint m=(a+b)/2;",
+			"\t\tT leftAns=query(l,r,a,m,u*2);",
+			"\t\tT rightAns=query(l,r,m,b,u*2+1);",
+			"\t\treturn max(leftAns,rightAns);",
+			"\t}",
+			"\tT calcQuery(int l,int r){",
+			"\t\treturn query(l,r,1,siz+1,1);",
+			"\t}",
+			"\tint getSiz(){",
+			"\t\treturn siz;",
+			"\t}",
+			"};",
+		],
+		"description": "segtreeRMQ"
+	},
+	"SegTreeRSQ":{
+		"prefix":"segtreeRSQ",
+		"body":[
+			"template<typename T>",
+			"class SegTree{",
+			"\tprivate:",
+			"\t//配列の要素数",
+			"\tint n;",
+			"\t//木のノード",
+			"\tvector<T> node;",
+			"\t//ノード1の要素数",
+			"\tint siz;",
+			"\tconst T INF=1e9;",
+			"\tvoid init(){",
+			"\t\t//sizをn以上の最小の2冪数にする",
+			"\t\tsiz=1;",
+			"\t\t//nodeのサイズ",
+			"\t\tint m=1;",
+			"\t\twhile(siz<n){",
+			"\t\t\tsiz*=2;",
+			"\t\t\tm+=siz;",
+			"\t\t}",
+			"\t\t//nodeの数を初期化",
+			"\t\tnode.resize(m);",
+			"\t}",
+			"\tpublic:",
+			"\tSegTree(int num):n(num){",
+			"\t\tinit();",
+			"\t}",
+			"\t//a[pos]をxに更新",
+			"\tvoid update(int pos,T x){",
+			"\t\tpos=pos+siz-1;",
+			"\t\tnode[pos]=x;",
+			"\t\twhile(pos>=2){",
+			"\t\t\tpos/=2;",
+			"\t\t\tnode[pos]=node[pos]=node[pos*2]+node[pos*2+1];",
+			"\t\t}",
+			"\t}",
+			"\t//半開区間[l,r)の最大値を求める",
+			"\t//u:現在のセル番号、[a,b):セルに対応する半開区間、[l,r):求めたい半開区間",
+			"\t//半開区間[l,r)の最大値を求めるにはquery(l,r,1,siz+1,1)を呼び出せばよい",
+			"\tT query(int l,int r,int a,int b,int u){",
+			"\t\t//一切含まれない場合",
+			"\t\tif(r<=a||b<=l){",
+			"\t\t\treturn 0;",
+			"\t\t}",
+			"\t\t//完全に含まれる場合",
+			"\t\tif(l<=a&&b<=r){",
+			"\t\t\treturn node[u];",
+			"\t\t}",
+			"\t\tint m=(a+b)/2;",
+			"\t\tT leftAns=query(l,r,a,m,u*2);",
+			"\t\tT rightAns=query(l,r,m,b,u*2+1);",
+			"\t\treturn leftAns+rightAns;",
+			"\t}",
+			"\tT calcQuery(int l,int r){",
+			"\t\treturn query(l,r,1,siz+1,1);",
+			"\t}",
+			"\tint getSiz(){",
+			"\t\treturn siz;",
+			"\t}",
+			"};",
+		],
+		"description": "segtreeRSQ"
+	},
+	"Doubling":{
+		"prefix":"doubling",
+		"body":[
+			"template<typename T>",
+			"class Doubling{",
+			"private:",
+			"\tvector<T> a;",
+			"\tvector<vector<T>> dp;",
+			"\tvoid init(){",
+			"\t\tint n=a.size();",
+			"\t\t//今回は日数の最大値が10^9なので、2^29程度まで計算すればよい",
+			"\t\t//日数の最大値が10^18とかなら、2^59程度まで計算することになりそう…?",
+			"\t\tdp.resize(30,vector<T>(n+1));",
+			"\t\t//初期値の代入",
+			"\t\t//穴iにいた2^0日後の場所:dp[0][i]",
+			"\t\t//穴iにいた2^1日後の場所:dp[1][i]",
+			"\t\t//穴iにいた2^2日後の場所:dp[2][i]",
+			"\t\t//穴iにいた2^3日後の場所:dp[3][i]",
+			"\t\tfor(int i=1;i<=n;i++){",
+			"\t\t\tdp[0][i]=a[i-1];",
+			"\t\t}",
+			"\t\t//前計算",
+			"\t\t//1日後の1日後は2日後",
+			"\t\t//dp[1][i]=dp[0][dp[0][i]]",
+			"\t\t//2日後の2日後は4日後",
+			"\t\t//dp[2][i]=dp[1][dp[1][i]]",
+			"\t\t//4日後の4日後は8日後",
+			"\t\t//dp[3][i]=dp[2][dp[2][i]]",
+			"\t\tfor(int i=1;i<=29;i++){",
+			"\t\t\tfor(int j=1;j<=n;j++){",
+			"\t\t\t\tdp[i][j]=dp[i-1][dp[i-1][j]];",
+			"\t\t\t}",
+			"\t\t}",
+			"\t}",
+			"public:",
+			"\tDoubling(vector<T> v):a(v){",
+			"\t\tinit();",
+			"\t}",
+			"\t//場所xにいる時、y日後にいる場所を求める",
+			"\tT calcPos(T x,T y){",
+			"\t\tT curPos=x;",
+			"\t\t//例:穴2にいた13日後の場所",
+			"\t\t//13=2^3+2^2+2^0",
+			"\t\t//穴2にいた8日後の場所はdp[3][2]=3",
+			"\t\t//穴3にいた4日後の場所はdp[2][3]=7",
+			"\t\t//穴7にいた1日後の場所はdp[0][7]=3",
+			"\t\tfor(int d=29;d>=0;d--){",
+			"\t\t\tif(y&(1<<d)){",
+			"\t\t\t\tcurPos=dp[d][curPos];",
+			"\t\t\t}",
+			"\t\t}",
+			"\t\treturn curPos;",
+			"\t}",
+			"};",
+		],
+		"description": "Doubling"
+	},
+	"StringHash":{
+		"prefix":"stringhash",
+		"body":[
+			"#include <atcoder/modint>",
+			"using namespace atcoder;",
+			"using mint=modint998244353;",
+			"class StringHash{",
+			"private:",
+			"\tstring s;",
+			"\t//基数100でハッシュ値計算しているのでオーバーフロー対策でmintを使う",
+			"\tvector<mint> t,H,B;",
+			"\tvoid init(){",
+			"\t\t//文字列sを数列tに変換",
+			"\t\tint n=s.size();",
+			"\t\tt.resize(n+1);",
+			"\t\tfor(int i=0;i<n;i++){",
+			"\t\t\tt[i]=s[i]-'a'+1;",
+			"\t\t}",
+			"\t\t//ハッシュ値の前計算のコンポーネント",
+			"\t\tH.resize(n+1);",
+			"\t\tfor(int i=1;i<=n;i++){",
+			"\t\t\tH[i]=100*H[i-1]+t[i-1];",
+			"\t\t}",
+			"\t\t//ハッシュ値の前計算のコンポーネント2",
+			"\t\tB.resize(n+1);",
+			"\t\tB[0]=1;",
+			"\t\tfor(int i=1;i<=n;i++){",
+			"\t\t\tB[i]=B[i-1]*100;",
+			"\t\t}",
+			"\t}",
+			"public:",
+			"\tStringHash(string str):s(str){",
+			"\t\tinit();",
+			"\t}",
+			"\t//s[l,r]のハッシュ値の計算",
+			"\tmint hash(int l,int r){",
+			"\t\treturn H[r]-B[r-l+1]*H[l-1];",
+			"\t}",
+			"};",
+		],
+		"description": "StringHash"
+	},
+}
