@@ -13,7 +13,7 @@
 	"ci":{
 		"prefix":"ci",
 		"body":[
-			"${1:int} ${2:n}",
+			"${1:int} ${2:n};",
 			"cin>>${2:n};"
 		],
 		"description": "標準入力"
@@ -21,8 +21,8 @@
 	"ci2":{
 		"prefix":"ci2",
 		"body":[
-			"${1:int} ${2:n},${3:m}",
-			"cin>>${4:n}>>${5:m};"
+			"${1:int} ${2:n},${3:m};",
+			"cin>>${2:n}>>${3:m};"
 		],
 		"description": "2変数の標準入力"
 	},
@@ -613,5 +613,118 @@
 			"};",
 		],
 		"description": "StringHash"
+	},
+  "cigraph":{
+		"prefix":"cigraph",
+		"body":[
+			"int n,m;",
+      "cin>>n>>m;",
+      "vector<vector<int>> g(n+1);",
+      "for(int i=0;i<m;i++){",
+      "\tint a,b;",
+      "\tcin>>a>>b;",
+      "\tg[a].push_back(b);",
+      "\tg[b].push_back(a);",
+      "}",
+		],
+		"description": "n頂点m辺の隣接リストの入力"
+	},
+  "dfs":{
+		"prefix":"lamdadfs",
+		"body":[
+      "auto dfs=[&](auto dfs,)->${1:type}{",
+      "\t",
+      "};",
+		],
+		"description": "lamdadfs"
+	},
+  "reverse":{
+		"prefix":"reverse",
+		"body":[
+      "reverse(${1:vec}.begin(),${1:vec}.end());",
+		],
+		"description": "reverse"
+	},
+  "bfs":{
+		"prefix":"bfs",
+		"body":[
+      "const int INF=1e9;",
+      "vector<int> dist(n+1,INF);",
+      "auto bfs=[&](){",
+      "\tqueue<int> que;",
+      "\tque.push(1);",
+      "\tdist[1]=0;",
+      "\twhile(!que.empty()){",
+      "\t\tint u=que.front();",
+      "\t\tque.pop();",
+      "\t\tfor(auto v:g[u]){",
+      "\t\t\tif(dist[v]!=INF){",
+      "\t\t\t\tcontinue;",
+      "\t\t\t}",
+      "\t\t\tdist[v]=dist[u]+1;",
+      "\t\t\tque.push(v);",
+      "\t\t}",
+      "\t}",
+      "};",
+      "bfs();",
+		],
+		"description": "隣接リストに対して頂点1から各頂点への最短距離を記録するbfs"
+	},
+  "dijkstra":{
+		"prefix":"dijkstra",
+		"body":[
+      "const int INF=1e9;",
+      "vector<int> cur(n+1,INF);//暫定距離を記録",
+      "vector<bool> confirmed(n+1);//最短距離が確定した頂点",
+      "auto dijkstra=[&](){",
+      "\tpriority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> hque;",
+      "\thque.push({0,1});",
+      "\tcur[1]=0;",
+      "\twhile(!hque.empty()){",
+      "\t\tauto [_,u]=hque.top();",
+      "\t\thque.pop();",
+      "\t\tif(confirmed[u]){// !確定済み頂点である間、キューの最小値を削除し続ける",
+      "\t\t\tcontinue;// !これを入れないとO(M^2)になってしまうケースがありそう。",
+      "\t\t\t// !実際に実験すると、下の*での確認だけでは、同じ頂点に対して複数の{コスト,頂点}の要素が入りうると分かる。",
+      "\t\t\t// !これを入れないと同じ頂点に対してN回ループ処理することになり、ボトルネックになりうる。",
+      "\t\t\t// !実験メモ",
+      "\t\t\t// !完全グラフに対して、キューへのpushの時にコストが全部同じになるようにしてシミュレーション。",
+      "\t\t\t// !キューの要素は合計で2M個になった。",
+      "\t\t\t// !これらの要素全てについてN回調べると、2M+(2M-N)N回の計算をするため、O(NM)となる。",
+      "\t\t\t// !この!での確認を行えば2M+log(MlogM)でconfirmを全て確定できる。",
+      "\t\t\t// !よって全体でO(MlogM)になりそう。",
+      "\t\t}",
+      "\t\tconfirmed[u]=true;",
+      "\t\tfor(auto [c,v]:g[u]){",
+      "\t\t\tif(!confirmed[v]){//隣接している未確定頂点についてcurを更新",
+      "\t\t\t\t// *正直こっちの確認は計算量削減にはあまり寄与しない",
+      "\t\t\t\t//各頂点の次数の総和は2Mなので、2M回しかキューには入らなく、!で示した部分があればそれぞれO(1)しか影響しない。",
+      "\t\t\t\thque.push({c+cur[u],v});//ヒープキューに暫定距離を入れつつ",
+      "\t\t\t\tcur[v]=min(cur[v],c+cur[u]);//!暫定距離を更新していく",
+      "\t\t\t\t//!暫定距離の更新は現在の値とのchminを取りつつ更新することに注意",
+      "\t\t\t\t//!push時にcur更新、pop時にconfirm確定、という気持ちでよさそう",
+      "\t\t\t\t//!curは更新されるとは限らないことに注意",
+      "\t\t\t}",
+      "\t\t}",
+      "\t}",
+      "};",
+      "dijkstra();",
+		],
+		"description": "コスト保持した隣接リストに対して、頂点1からダイクストラ法"
+	},
+  "ciwgraph":{
+		"prefix":"ciwgraph",
+		"body":[
+      "int n,m;",
+      "cin>>n>>m;",
+      "vector<vector<pair<int,int>>> g(n+1);",
+      "for(int i=0;i<m;i++){",
+      "\tint a,b,c;",
+      "\tcin>>a>>b>>c;",
+      "\tg[a].push_back({c,b});",
+      "\tg[b].push_back({c,a});",
+      "}",
+		],
+		"description": "コスト付きn頂点m辺の隣接リスト入力"
 	},
 }
