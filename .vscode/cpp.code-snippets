@@ -6,6 +6,7 @@
 			"using namespace std;",
 			"int main(){",
 			"\t$1",
+			"\treturn 0;",
 			"}"
 		],
 		"description":"main関数"
@@ -29,8 +30,8 @@
 	"ci3":{
 		"prefix":"ci3",
 		"body":[
-			"${1:int} ${2:n},${3:m},${4:k}",
-			"cin>>${5:n}>>${6:m}>>${7:k};"
+			"${1:int} ${2:n},${3:m},${4:k};",
+			"cin>>${2:n}>>${3:m}>>${4:k};"
 		],
 		"description": "3変数の標準入力"
 	},
@@ -39,7 +40,7 @@
 		"body":[
 			"vector<${1:int}> ${2:vec}(${3:n});",
 			"for(auto &&in:${2:vec}){",
-			"\tcin>>in",
+			"\tcin>>in;",
 			"}"
 		],
 		"description":"vectorの標準入力"
@@ -73,7 +74,7 @@
 		"prefix":"cove",
 		"body":[
 			"for(auto out=${1:vec}.begin();out!=${1:vec}.end();out++){",
-			"\tcout<<*out<<((out!=--${1:vec}.end())?' ':'\\n')",
+			"\tcout<<*out<<((out!=--${1:vec}.end())?' ':'\\n');",
 			"}"
 		],
 		"description": "vectorの標準出力"
@@ -303,7 +304,7 @@
 	"all":{
 		"prefix":"all",
 		"body":[
-			"${1:vec}.begin(),${2:vec}.end()"
+			"${1:vec}.begin(),${1:vec}.end()"
 		],
 		"description": "イテレータ全範囲"
 	},
@@ -317,7 +318,7 @@
 	"chmin":{
 		"prefix":"chmin",
 		"body":[
-			"${1:min}=max(${1:min},${2:target});"
+			"${1:min}=min(${1:min},${2:target});"
 		],
 		"description": "chmin"
 	},
@@ -726,5 +727,91 @@
       "}",
 		],
 		"description": "コスト付きn頂点m辺の隣接リスト入力"
+	},
+	"rall":{
+		"prefix":"rall",
+		"body":[
+			"${1:vec}.rbegin(),${1:vec}.rend()"
+		],
+		"description": "逆からイテレータ全範囲"
+	},
+	"sort":{
+		"prefix":"sort",
+		"body":[
+			"sort(${1:vec}.begin(),${1:vec}.end());"
+		],
+		"description": "昇順ソート"
+	},
+	"rsort":{
+		"prefix":"rsort",
+		"body":[
+			"sort(${1:vec}.rbegin(),${1:vec}.rend());"
+		],
+		"description": "降順ソート"
+	},
+	"cerr":{
+		"prefix":"ce",
+		"body":[
+			"cerr<<${1:num}<<'\\n';"
+		],
+		"description": "cerr"
+	},
+	"cerr2":{
+		"prefix":"ce2",
+		"body":[
+			"cerr<<${1:num}<<${2:num}<<'\\n';"
+		],
+		"description": "cerr2"
+	},
+	"ci4":{
+		"prefix":"ci4",
+		"body":[
+			"${1:int} ${2:n},${3:m},${4:k},${5:l};",
+			"cin>>${2:n}>>${3:m}>>${4:k}>>${5:l};"
+		],
+		"description": "4変数の標準入力"
+	},
+	"lamdafloori":{
+		"prefix":"lamdafloori",
+		"body":[
+			"auto floori=[&](int a,int b){",
+			"\treturn a/b;",
+			"};",
+		],
+		"description": "lamdafloori"
+	},
+	"lamdaceili":{
+		"prefix":"lamdaceili",
+		"body":[
+			"auto ceili=[&](int a,int b){",
+			"\treturn (a+(b-1))/b;",
+			"};",
+		],
+		"description": "lamdaceili"
+	},
+	"lamdafloorll":{
+		"prefix":"lamdafloorll",
+		"body":[
+			"auto floorll=[&](long long a,long long b){",
+			"\treturn a/b;",
+			"};",
+		],
+		"description": "lamdafloorll"
+	},
+	"lamdaceilll":{
+		"prefix":"lamdaceilll",
+		"body":[
+			"auto ceilll=[&](long long a,long long b){",
+			"\treturn (a+(b-1))/b;",
+			"};",
+		],
+		"description": "lamdaceilll"
+	},
+	"sankou":{
+		"prefix":"sankou",
+		"body":[
+			"((${1:condition})?${2:a}:${3:b})",
+		],
+		"description": "sankou"
 	},
 }
