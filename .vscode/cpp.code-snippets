@@ -260,8 +260,8 @@
 		],
 		"description": "dxdy8の出力"
 	},
-	"for":{
-		"prefix":"for",
+	"for0":{
+		"prefix":"for0",
 		"body":[
 			"for(${1:int} ${2:i}=0;${2:i}<${3:n};${2:i}++){",
 			"\t$4",
@@ -700,11 +700,11 @@
       "\t\t\tif(!confirmed[v]){//隣接している未確定頂点についてcurを更新",
       "\t\t\t\t// *正直こっちの確認は計算量削減にはあまり寄与しない",
       "\t\t\t\t//各頂点の次数の総和は2Mなので、2M回しかキューには入らなく、!で示した部分があればそれぞれO(1)しか影響しない。",
-      "\t\t\t\thque.push({c+cur[u],v});//ヒープキューに暫定距離を入れつつ",
       "\t\t\t\tcur[v]=min(cur[v],c+cur[u]);//!暫定距離を更新していく",
       "\t\t\t\t//!暫定距離の更新は現在の値とのchminを取りつつ更新することに注意",
       "\t\t\t\t//!push時にcur更新、pop時にconfirm確定、という気持ちでよさそう",
       "\t\t\t\t//!curは更新されるとは限らないことに注意",
+      "\t\t\t\thque.push({cur[v],v});//ヒープキューに暫定距離を入れつつ",
       "\t\t\t}",
       "\t\t}",
       "\t}",
@@ -813,5 +813,29 @@
 			"((${1:condition})?${2:a}:${3:b})",
 		],
 		"description": "sankou"
+	},
+	"pair":{
+		"prefix":"pair",
+		"body":[
+			"pair<${1:int},${1:int}>",
+		],
+		"description": "pair"
+	},
+	"veclear":{
+		"prefix":"veclear",
+		"body":[
+			"${1:vec}.clear();",
+			"${1:vec}.resize(${2:size},${3:val});",
+		],
+		"description": "veclear"
+	},
+	"for1":{
+		"prefix":"for1",
+		"body":[
+			"for(${1:int} ${2:i}=1;${2:i}<=${3:n};${2:i}++){",
+			"\t$4",
+			"}"
+		],
+		"description": "1indexed-for文"
 	},
 }
