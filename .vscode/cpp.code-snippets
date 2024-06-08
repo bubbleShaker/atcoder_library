@@ -35,27 +35,28 @@
 		],
 		"description": "3変数の標準入力"
 	},
-	"cive":{
-		"prefix":"cive",
-		"body":[
-			"vector<${1:int}> ${2:vec}(${3:n});",
-			"for(auto &&in:${2:vec}){",
-			"\tcin>>in;",
-			"}"
-		],
-		"description":"vectorの標準入力"
-	},
-	"cive2":{
-		"prefix":"cive2",
-		"body":[
-			"vector<vector<${1:int}>> ${2:vec}(${3:n},vector<${1:int}>(${4:m}));",
-			"for(auto &&row:${2:vec}){",
-			"\tfor(auto &&in:row){",
-			"\t\tcin>>in;",
-			"}"
-		],
-		"description":"2次元vectorの標準入力"
-	},
+	// "cive":{
+	// 	"prefix":"cive",
+	// 	"body":[
+	// 		"vector<${1:int}> ${2:vec}(${3:n});",
+	// 		"for(auto &&in:${2:vec}){",
+	// 		"\tcin>>in;",
+	// 		"}"
+	// 	],
+	// 	"description":"vectorの標準入力"
+	// },
+	// "cive2":{
+	// 	"prefix":"cive2",
+	// 	"body":[
+	// 		"vector<vector<${1:int}>> ${2:vec}(${3:n},vector<${1:int}>(${4:m}));",
+	// 		"for(auto &&row:${2:vec}){",
+	// 		"\tfor(auto &&in:row){",
+	// 		"\t\tcin>>in;",
+	// 		"\t}",
+	// 		"}"
+	// 	],
+	// 	"description":"2次元vectorの標準入力"
+	// },
 	"co":{
 		"prefix":"co",
 		"body":[
@@ -149,7 +150,7 @@
 	"vector<vector<int>>":{
 		"prefix":"ve2",
 		"body":[
-			"vector<vector<${1:int}>>"
+			"vector<vector<${1:int}>> ${2:x}(${3:n},vector<${1:int}>(${4:m}));"
 		],
 		"description": "2次元vector型の出力"
 	},
@@ -999,5 +1000,259 @@
 		],
 		"description": "コスト付き木の直径をダイクストラを用いて求める+直径の性質を用いて各頂点が持つ最大コストを持つ頂点に対するコストを計算する"
 	},
-	
+	"return":{
+		"prefix":"re0",
+		"body":[
+			"return 0;",
+		],
+		"description": "return 0を返す"
+	},
+	"coyes":{
+		"prefix":"coye",
+		"body":[
+			"cout<<\"Yes\"<<'\\n';",
+		],
+		"description": "coye"
+	},
+	"cono":{
+		"prefix":"cono",
+		"body":[
+			"cout<<\"No\"<<'\\n';",
+		],
+		"description": "cono"
+	},
+	"bitset":{
+		"prefix":"bs",
+		"body":[
+			"bitset<${1:size}> ${2:bs}(${3:n});",
+			"//リファレンス:https://cpprefjp.github.io/reference/bitset/bitset.html",
+			"//雑メモ:coutで2進法表記で出力",
+			"//整数から10ビットのビット集合を構築",
+			"//bitset<10> bs(5)",
+			"//論理和、論理積、排他的論理和もサポートしている",
+			"//他にも[]で任意のビットにアクセス、countで1になっているビットの数を取得など",
+			"//様々なメソッド、アクセッサー?、演算子などが定義されている",
+		],
+		"description": "bitset"
+	},
+	"stoi":{
+		"prefix":"stoi",
+		"body":[
+			"stoi(${1:str},0,${2:base});",
+			"//str…変換したい文字列",
+			"//base...変換する文字列の基数(2進数を変換したいなら2とする)",
+		],
+		"description": "stoi"
+	},
+	"stoll":{
+		"prefix":"stoll",
+		"body":[
+			"stoll(${1:str},0,${2:base});",
+			"//str…変換したい文字列",
+			"//base...変換する文字列の基数(2進数を変換したいなら2とする)",
+		],
+		"description": "stoll"
+	},
+	"to_string":{
+		"prefix":"tos",
+		"body":[
+			"to_string(${1:n})",
+		],
+		"description": "to_string"
+	},
+	"for0n2":{
+		"prefix":"for0n2",
+		"body":[
+			"for(int i=0;i<${1:n};i++){",
+			"\tfor(int j=0;j<${2:m};j++){",
+			"\t\t$3",
+			"\t}",
+			"}",
+		],
+		"description": "for0n2"
+	},
+	"for1n2":{
+		"prefix":"for1n2",
+		"body":[
+			"for(int i=1;i<=${1:n};i++){",
+			"\tfor(int j=1;j<=${2:m};j++){",
+			"\t\t$3",
+			"\t}",
+			"}",
+		],
+		"description": "for1n2"
+	},
+	"for0n3":{
+		"prefix":"for0n3",
+		"body":[
+			"for(int i=0;i<${1:n};i++){",
+			"\tfor(int j=0;j<${2:m};j++){",
+			"\t\tfor(int k=0;k<${3:l};k++){",
+			"\t\t\t$4",
+			"\t\t}",
+			"\t}",
+			"}",
+		],
+		"description": "for0n3"
+	},
+	"for1n3":{
+		"prefix":"for1n3",
+		"body":[
+			"for(int i=1;i<=${1:n};i++){",
+			"\tfor(int j=1;j<=${2:m};j++){",
+			"\t\tfor(int k=1;k<=${3:l};k++){",
+			"\t\t\t$4",
+			"\t\t}",
+			"\t}",
+			"}",
+		],
+		"description": "for1n3"
+	},
+	"rsw":{
+		"prefix":"rsw",
+		"body":[
+			"vector<int> rsw(${1:n}+1);",
+			"for(int i=1;i<=${1:n};i++){",
+			"\trsw[i]+=${2:a}[i]+rsw[i-1];",
+			"}",
+		],
+		"description": "rsw"
+	},
+	"whilequery":{
+		"prefix":"wq",
+		"body":[
+			"while(q--){",
+			"\t$1",
+			"}",
+		],
+		"description": "wq"
+	},
+	"calcrsw":{
+		"prefix":"calcrsw",
+		"body":[
+			"${1:rsw}[${2:r}]-${1:rsw}[${3:l-1}]",
+		],
+		"description": "calcrsw"
+	},
+	"imos":{
+		"prefix":"imos",
+		"body":[
+			"vector<int> imos(${1:d}+10);",
+			"for(int i=0;i<${2:n};i++){",
+			"\tint ${3:l},${4:r};",
+			"\tcin>>${3:l}>>${4:r};",
+			"\timos[${3:l}]++;",
+			"\timos[${4:r}+1]--;",
+			"}",
+			"for(int i=1;i<=${1:d};i++){",
+			"\timos[i]+=imos[i-1];",
+			"}",
+			"for(int i=1;i<=${1:d};i++){",
+			"\tcout<<imos[i]<<'\\n';",
+			"}",
+		],
+		"description": "imos"
+	},
+	"ci5":{
+		"prefix":"ci5",
+		"body":[
+			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e};",
+			"cin>>${2:a}>>${3:b}>>${4:c}>>${5:d}>>${6:e};"
+		],
+		"description": "ci5"
+	},
+	"ci6":{
+		"prefix":"ci6",
+		"body":[
+			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e},${7:f};",
+			"cin>>${2:a}>>${3:b}>>${4:c}>>${5:d}>>${6:e}>>${7:f};"
+		],
+		"description": "ci6"
+	},
+	"ci7":{
+		"prefix":"ci7",
+		"body":[
+			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e},${7:f},${8:g};",
+			"cin>>${2:a}>>${3:b}>>${4:c}>>${5:d}>>${6:e}>>${7:f}>>${8:g};"
+		],
+		"description": "ci7"
+	},
+	"rsw2":{
+		"prefix":"rsw2",
+		"body":[
+			"vector<vector<${0:int}>> rsw(${1:h}+1,vector<${0:int}>(${2:w}+1));",
+			"//列方向への累積和",
+			"for(int i=0;i<=${1:h};i++){",
+			"\tfor(int j=1;j<=${2:w};j++){",
+			"\t\trsw[i][j]+=${3:x}[i][j]+rsw[i][j-1];",
+			"\t}",
+			"}",
+			"//行方向への累積和",
+			"for(int j=0;j<=${2:w};j++){",
+			"\tfor(int i=1;i<=${1:h};i++){",
+			"\t\trsw[i][j]+=rsw[i-1][j];",
+			"\t}",
+			"}",
+		],
+		"description": "rsw2"
+	},
+	"calcrsw2":{
+		"prefix":"calcrsw2",
+		"body":[
+			"rsw[${1:migisitaX}][${2:migisitaY}]+rsw[${3:hidariueX}-1][${4:hidariueY}-1]-rsw[${3:hidariueX}-1][${2:migisitaY}]-rsw[${1:migisitaX}][${4:hidariueY}-1]",
+		],
+		"description": "calcrsw2"
+	},
+	"imos2":{
+		"prefix":"imos2",
+		"body":[
+			"vector<vector<int>> imos(${1:h}+2,vector<int>(${2:w}+2));",
+			"for(int i=0;i<${3:n};i++){",
+			"\tint ${4:hidariueX},${5:hidariueY},${6:migisitaX},${7:migisitaY};",
+			"\tcin>>${4:hidariueX}>>${5:hidariueY}>>${6:migisitaX}>>${7:migisitaY};",
+			"\timos[${4:hidariueX}][${5:hidariueY}]++;",
+			"\timos[${4:hidariueX}][${7:migisitaY}+1]--;",
+			"\timos[${6:migisitaX}+1][${5:hidariueY}]--;",
+			"\timos[${6:migisitaX}+1][${7:migisitaY}+1]++;",
+			"}",
+			"//列方向に累積和",
+			"for(int i=0;i<=${1:h};i++){",
+			"\tfor(int j=1;j<=${2:w};j++){",
+			"\t\timos[i][j]+=imos[i][j-1];",
+			"\t}",
+			"}",
+			"//行方向に累積和",
+			"for(int j=0;j<=${2:w};j++){",
+			"\tfor(int i=1;i<=${1:h};i++){",
+			"\t\timos[i][j]+=imos[i-1][j];",
+			"\t}",
+			"}",
+			"for(int i=1;i<=${1:h};i++){",
+			"\tfor(int j=1;j<=${2:w};j++){",
+			"\t\tcout<<imos[i][j]<<((j!=${2:w})?' ':'\\n');",
+			"\t}",
+			"}",
+		],
+		"description": "imos2"
+	},
+	"rsmax":{
+		"prefix":"rsmax",
+		"body":[
+			"vector<int> rsmax1(${1:n}+2),rsmax2(${1:n}+2);//1…左から,2…右から",
+			"for(int i=1;i<=${1:n};i++){",
+			"\trsmax1[i]=max(rsmax1[i-1],${2:a}[i]);",
+			"}",
+			"for(int i=${1:n};i>=1;i--){",
+			"\trsmax2[i]=max(rsmax2[i+1],${2:a}[i]);",
+			"}",
+			"int ${3:d};",
+			"cin>>${3:d};",
+			"for(int i=0;i<${3:d};i++){",
+			"\tint ${4:l},${5:r};",
+			"\tcin>>${4:l}>>${5:r};",
+			"\tcout<<max(rsmax1[${4:l}-1],rsmax2[${5:r}+1])<<'\\n';",
+			"}",
+		],
+		"description": "rsmax"
+	},
 }
