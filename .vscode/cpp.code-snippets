@@ -2,8 +2,7 @@
 	"main":{
 		"prefix":"main",
 		"body":[
-			"#include <bits/stdc++.h>",
-			"using namespace std;",
+			"#include <iostream>",
 			"int main(){",
 			"\t$1",
 			"\treturn 0;",
@@ -15,7 +14,7 @@
 		"prefix":"ci",
 		"body":[
 			"${1:int} ${2:n};",
-			"cin>>${2:n};"
+			"std::cin>>${2:n};"
 		],
 		"description": "標準入力"
 	},
@@ -23,7 +22,7 @@
 		"prefix":"ci2",
 		"body":[
 			"${1:int} ${2:n},${3:m};",
-			"cin>>${2:n}>>${3:m};"
+			"std::cin>>${2:n}>>${3:m};"
 		],
 		"description": "2変数の標準入力"
 	},
@@ -31,43 +30,43 @@
 		"prefix":"ci3",
 		"body":[
 			"${1:int} ${2:n},${3:m},${4:k};",
-			"cin>>${2:n}>>${3:m}>>${4:k};"
+			"std::cin>>${2:n}>>${3:m}>>${4:k};"
 		],
 		"description": "3変数の標準入力"
 	},
 	// "cive":{
 	// 	"prefix":"cive",
 	// 	"body":[
-	// 		"vector<${1:int}> ${2:vec}(${3:n});",
+	// 		"std::vector<${1:int}> ${2:vec}(${3:n});",
 	// 		"for(auto &&in:${2:vec}){",
-	// 		"\tcin>>in;",
+	// 		"\tstd::cin>>in;",
 	// 		"}"
 	// 	],
-	// 	"description":"vectorの標準入力"
+	// 	"description":"std::vectorの標準入力"
 	// },
 	// "cive2":{
 	// 	"prefix":"cive2",
 	// 	"body":[
-	// 		"vector<vector<${1:int}>> ${2:vec}(${3:n},vector<${1:int}>(${4:m}));",
+	// 		"std::vector<std::vector<${1:int}>> ${2:vec}(${3:n},std::vector<${1:int}>(${4:m}));",
 	// 		"for(auto &&row:${2:vec}){",
 	// 		"\tfor(auto &&in:row){",
-	// 		"\t\tcin>>in;",
+	// 		"\t\tstd::cin>>in;",
 	// 		"\t}",
 	// 		"}"
 	// 	],
-	// 	"description":"2次元vectorの標準入力"
+	// 	"description":"2次元std::vectorの標準入力"
 	// },
 	"co":{
 		"prefix":"co",
 		"body":[
-			"cout<<${1:n}<<'\\n';"
+			"std::cout<<${1:n}<<'\\n';"
 		],
 		"description": "標準出力"
 	},
 	"co2":{
 		"prefix":"co2",
 		"body":[
-			"cout<<${1:n}<<' '<<${2:m}<<'\\n';"
+			"std::cout<<${1:n}<<' '<<${2:m}<<'\\n';"
 		],
 		"description": "2変数の標準出力"
 	},
@@ -75,54 +74,54 @@
 		"prefix":"cove",
 		"body":[
 			"for(auto out=${1:vec}.begin();out!=${1:vec}.end();out++){",
-			"\tcout<<*out<<((out!=--${1:vec}.end())?' ':'\\n');",
+			"\tstd::cout<<*out<<((out!=--${1:vec}.end())?' ':'\\n');",
 			"}"
 		],
-		"description": "vectorの標準出力"
+		"description": "std::vectorの標準出力"
 	},
 	"cove2":{
 		"prefix":"cove2",
 		"body":[
 			"for(auto &&row:${1:vec}){",
 			"\tfor(auto out=row.begin();out!=row.end();out++){",
-			"\t\tcout<<*out<<((out!=--row.end())?' ':'\\n')",
+			"\t\tstd::cout<<*out<<((out!=--row.end())?' ':'\\n')",
 			"\t}",
 			"}"
 		],
-		"description": "2次元vectorの標準出力"
+		"description": "2次元std::vectorの標準出力"
 	},
 	"coyesno":{
 		"prefix":"coyesno",
 		"body":[
-			"cout<<((${1:condition})?\"Yes\":\"No\")<<'\\n';"
+			"std::cout<<((${1:condition})?\"Yes\":\"No\")<<'\\n';"
 		],
 		"description": "YesNoの出力"
 	},
-	"coaccuracy":{
-		"prefix":"coaccuracy",
+	"setprecision":{
+		"prefix":"setprecision",
 		"body":[
-			"cout<<fixed<<setprecision(10);"
+			"std::cout<<std::fixed<<std::setprecision(10);"
 		],
 		"description": "setpresicionの指定"
 	},
 	"cobool":{
 		"prefix":"cobool",
 		"body":[
-			"cout<<boolalpha;"
+			"std::cout<<boolalpha;"
 		],
 		"description": "boolalphaの設定。bool値を文字列として出力できる。https://cpprefjp.github.io/reference/ios/boolalpha.html"
 	},
 	"copad":{
 		"prefix":"copad",
 		"body":[
-			"cout<<setfill('0')<<setw(${1:length})<<${2:out}<<'\\n';"
+			"std::cout<<setfill('0')<<setw(${1:length})<<${2:out}<<'\\n';"
 		],
 		"description": "パディングして数値を出力できる。https://cpprefjp.github.io/reference/iomanip/setfill.html"
 	},
 	"coflush":{
 		"prefix":"coflush",
 		"body":[
-			"cout<<flush;"
+			"std::cout<<flush;"
 		],
 		"description": "flushの出力"
 	},
@@ -140,96 +139,96 @@
 		],
 		"description": "long longの出力"
 	},
-	"vector":{
+	"std::vector":{
 		"prefix":"ve",
 		"body":[
-			"vector<${1:int}>"
+			"std::vector<${1:int}>"
 		],
-		"description": "vector型の出力"
+		"description": "std::vector型の出力"
 	},
-	"vector<vector<int>>":{
+	"std::vector<std::vector<int>>":{
 		"prefix":"ve2",
 		"body":[
-			"vector<vector<${1:int}>> ${2:x}(${3:n},vector<${1:int}>(${4:m}));"
+			"std::vector<std::vector<${1:int}>> ${2:x}(${3:n},std::vector<${1:int}>(${4:m}));"
 		],
-		"description": "2次元vector型の出力"
+		"description": "2次元std::vector型の出力"
 	},
 	"set":{
 		"prefix":"st",
 		"body":[
-			"set<${1:int}>"
+			"std::set<${1:int}>"
 		],
 		"description": "set型の出力"
 	},
 	"unordered_set":{
 		"prefix":"ust",
 		"body":[
-			"unordered_set<${1:int}>"
+			"std::unordered_set<${1:int}>"
 		],
 		"description": "unordered_set型の出力"
 	},
 	"multiset":{
 		"prefix":"mst",
 		"body":[
-			"multiset<${1:int}>"
+			"std::multiset<${1:int}>"
 		],
 		"description": "multiset型の出力"
 	},
 	"map":{
 		"prefix":"mp",
 		"body":[
-			"map<${1:int},${2:int}>"
+			"std::map<${1:int},${2:int}>"
 		],
 		"description": "map型の出力"
 	},
 	"unordered_map":{
 		"prefix":"ump",
 		"body":[
-			"unordered_map<${1:int},${2:int}>"
+			"std::unordered_map<${1:int},${2:int}>"
 		],
 		"description": "unordered_map型の出力"
 	},
 	"stack":{
 		"prefix":"stk",
 		"body":[
-			"stack<${1:int}>"
+			"std::stack<${1:int}>"
 		],
 		"description": "stack型の出力"
 	},
 	"queue":{
 		"prefix":"que",
 		"body":[
-			"queue<${1:int}>"
+			"std::queue<${1:int}>"
 		],
 		"description": "queue型の出力"
 	},
 	"priority_queue":{
 		"prefix":"pq",
 		"body":[
-			"priority_queue<${1:int}>"
+			"std::priority_queue<${1:int}>"
 		],
 		"description": "priority_queue型の出力"
 	},
 	"heap_queue":{
 		"prefix":"hq",
 		"body":[
-			"priority_queue<${1:int},vector<${1:int}>,greater<${1:int}>>"
+			"std::priority_queue<${1:int},std::vector<${1:int}>,greater<${1:int}>>"
 		],
 		"description": "heap_queue型の出力"
 	},
 	"vecsized":{
 		"prefix":"vecsized",
 		"body":[
-			"vector<${1:int}> ${2:a}(${3:n});"
+			"std::vector<${1:int}> ${2:a}(${3:n});"
 		],
-		"description": "vector型のサイズ付き出力"
+		"description": "std::vector型のサイズ付き出力"
 	},
 	"vec2sized":{
 		"prefix":"vecsized2",
 		"body":[
-			"vector<vector<${1:int}>> ${2:a}(${3:n},vector<${1:int}>(${4:m}));"
+			"std::vector<std::vector<${1:int}>> ${2:a}(${3:n},std::vector<${1:int}>(${4:m}));"
 		],
-		"description": "2次元vector型のサイズ付き出力"
+		"description": "2次元std::vector型のサイズ付き出力"
 	},
 	"INFi":{
 		"prefix":"infi",
@@ -248,16 +247,16 @@
 	"dxdy":{
 		"prefix":"dxdy",
 		"body":[
-			"const vector<int> dx={-1,0,1,0};",
-			"const vector<int> dy={0,1,0,-1};"
+			"const std::vector<int> dx={-1,0,1,0};",
+			"const std::vector<int> dy={0,1,0,-1};"
 		],
 		"description": "dxdyの出力"
 	},
 	"dxdy8":{
 		"prefix":"dxdy8",
 		"body":[
-			"const vector<int> dx={-1,-1,0,1,1,1,0,-1};",
-			"const vector<int> dy={0,1,1,1,0,-1,-1,-1};"
+			"const std::vector<int> dx={-1,-1,0,1,1,1,0,-1};",
+			"const std::vector<int> dy={0,1,1,1,0,-1,-1,-1};"
 		],
 		"description": "dxdy8の出力"
 	},
@@ -312,14 +311,14 @@
 	"chmax":{
 		"prefix":"chmax",
 		"body":[
-			"${1:max}=max(${1:max},${2:target});"
+			"${1:max}=std::max(${1:max},${2:target});"
 		],
 		"description": "chmax"
 	},
 	"chmin":{
 		"prefix":"chmin",
 		"body":[
-			"${1:min}=min(${1:min},${2:target});"
+			"${1:min}=std::min(${1:min},${2:target});"
 		],
 		"description": "chmin"
 	},
@@ -376,14 +375,13 @@
 		"prefix":"acl",
 		"body":[
 			"#include <atcoder/${1|fenwicktree,segtree,lazysegtree,string,math,convolution,modint,dsu,maxflow,mincostflow,scc,twosat|}>",
-			"using namespace atcoder;"
 		],
 		"description": "acl"
 	},
 	"mint":{
 		"prefix":"mint",
 		"body":[
-			"using mint=modint${1|998244353,1000000007|};"
+			"using mint=atcoder::modint${1|998244353,1000000007|};"
 		],
 		"description": "mint"
 	},
@@ -396,7 +394,7 @@
 			"\t//配列の要素数",
 			"\tint n;",
 			"\t//木のノード",
-			"\tvector<T> node;",
+			"\tstd::vector<T> node;",
 			"\t//ノード1の要素数",
 			"\tint siz;",
 			"\tconst T INF=1e9;",
@@ -422,7 +420,7 @@
 			"\t\tnode[pos]=x;",
 			"\t\twhile(pos>=2){",
 			"\t\t\tpos/=2;",
-			"\t\t\tnode[pos]=max(node[pos*2],node[pos*2+1]);",
+			"\t\t\tnode[pos]=std::max(node[pos*2],node[pos*2+1]);",
 			"\t\t}",
 			"\t}",
 			"\t//半開区間[l,r)の最大値を求める",
@@ -440,7 +438,7 @@
 			"\t\tint m=(a+b)/2;",
 			"\t\tT leftAns=query(l,r,a,m,u*2);",
 			"\t\tT rightAns=query(l,r,m,b,u*2+1);",
-			"\t\treturn max(leftAns,rightAns);",
+			"\t\treturn std::max(leftAns,rightAns);",
 			"\t}",
 			"\tT calcQuery(int l,int r){",
 			"\t\treturn query(l,r,1,siz+1,1);",
@@ -461,7 +459,7 @@
 			"\t//配列の要素数",
 			"\tint n;",
 			"\t//木のノード",
-			"\tvector<T> node;",
+			"\tstd::vector<T> node;",
 			"\t//ノード1の要素数",
 			"\tint siz;",
 			"\tconst T INF=1e9;",
@@ -523,13 +521,13 @@
 			"template<typename T>",
 			"class Doubling{",
 			"private:",
-			"\tvector<T> a;",
-			"\tvector<vector<T>> dp;",
+			"\tstd::vector<T> a;",
+			"\tstd::vector<std::vector<T>> dp;",
 			"\tvoid init(){",
 			"\t\tint n=a.size();",
 			"\t\t//今回は日数の最大値が10^9なので、2^29程度まで計算すればよい",
 			"\t\t//日数の最大値が10^18とかなら、2^59程度まで計算することになりそう…?",
-			"\t\tdp.resize(30,vector<T>(n+1));",
+			"\t\tdp.resize(30,std::vector<T>(n+1));",
 			"\t\t//初期値の代入",
 			"\t\t//穴iにいた2^0日後の場所:dp[0][i]",
 			"\t\t//穴iにいた2^1日後の場所:dp[1][i]",
@@ -552,7 +550,7 @@
 			"\t\t}",
 			"\t}",
 			"public:",
-			"\tDoubling(vector<T> v):a(v){",
+			"\tDoubling(std::vector<T> v):a(v){",
 			"\t\tinit();",
 			"\t}",
 			"\t//場所xにいる時、y日後にいる場所を求める",
@@ -578,13 +576,12 @@
 		"prefix":"stringhash",
 		"body":[
 			"#include <atcoder/modint>",
-			"using namespace atcoder;",
-			"using mint=modint998244353;",
+			"using mint=atcoder::modint998244353;",
 			"class StringHash{",
 			"private:",
-			"\tstring s;",
+			"\tstd::string s;",
 			"\t//基数100でハッシュ値計算しているのでオーバーフロー対策でmintを使う",
-			"\tvector<mint> t,H,B;",
+			"\tstd::vector<mint> t,H,B;",
 			"\tvoid init(){",
 			"\t\t//文字列sを数列tに変換",
 			"\t\tint n=s.size();",
@@ -605,7 +602,7 @@
 			"\t\t}",
 			"\t}",
 			"public:",
-			"\tStringHash(string str):s(str){",
+			"\tStringHash(std::string str):s(str){",
 			"\t\tinit();",
 			"\t}",
 			"\t//s[l,r]のハッシュ値の計算",
@@ -620,11 +617,11 @@
 		"prefix":"cigraph",
 		"body":[
 			"int n,m;",
-      "cin>>n>>m;",
-      "vector<vector<int>> g(n+1);",
+      "std::cin>>n>>m;",
+      "std::vector<std::vector<int>> g(n+1);",
       "for(int i=0;i<m;i++){",
       "\tint a,b;",
-      "\tcin>>a>>b;",
+      "\tstd::cin>>a>>b;",
       "\tg[a].push_back(b);",
       "\tg[b].push_back(a);",
       "}",
@@ -643,7 +640,7 @@
   "reverse":{
 		"prefix":"reverse",
 		"body":[
-      "reverse(${1:vec}.begin(),${1:vec}.end());",
+      "std::reverse(${1:vec}.begin(),${1:vec}.end());",
 		],
 		"description": "reverse"
 	},
@@ -651,9 +648,9 @@
 		"prefix":"bfs",
 		"body":[
       "const int INF=1e9;",
-      "vector<int> dist(n+1,INF);",
+      "std::vector<int> dist(n+1,INF);",
       "auto bfs=[&](){",
-      "\tqueue<int> que;",
+      "\tstd::queue<int> que;",
       "\tque.push(1);",
       "\tdist[1]=0;",
       "\twhile(!que.empty()){",
@@ -677,9 +674,9 @@
 		"body":[
       "const long long INF=1e18;",
 			"auto dijkstra=[&](int start){",
-			"\tvector<long long> cur(n+1,INF);//暫定距離を記録",
-			"\tvector<bool> confirmed(n+1);//最短距離が確定した頂点",
-			"\tpriority_queue<pair<long long,int>,vector<pair<long long,int>>,greater<pair<long long,int>>> hque;",
+			"\tstd::vector<long long> cur(n+1,INF);//暫定距離を記録",
+			"\tstd::vector<bool> confirmed(n+1);//最短距離が確定した頂点",
+			"\tstd::priority_queue<pair<long long,int>,std::vector<pair<long long,int>>,greater<pair<long long,int>>> hque;",
 			"\thque.push({0,start});",
 			"\tcur[start]=0;",
 			"\twhile(!hque.empty()){",
@@ -701,7 +698,7 @@
 			"\t\t\tif(!confirmed[v]){//隣接している未確定頂点についてcurを更新",
 			"\t\t\t\t// *正直こっちの確認は計算量削減にはあまり寄与しない",
 			"\t\t\t\t//各頂点の次数の総和は2Mなので、2M回しかキューには入らなく、!で示した部分があればそれぞれO(1)しか影響しない。",
-			"\t\t\t\tcur[v]=min(cur[v],c+cur[u]);//!暫定距離を更新していく",
+			"\t\t\t\tcur[v]=std::min(cur[v],c+cur[u]);//!暫定距離を更新していく",
 			"\t\t\t\t//!暫定距離の更新は現在の値とのchminを取りつつ更新することに注意",
 			"\t\t\t\t//!push時にcur更新、pop時にconfirm確定、という気持ちでよさそう",
 			"\t\t\t\t//!curは更新されるとは限らないことに注意",
@@ -711,7 +708,7 @@
 			"\t}",
 			"\treturn cur;",
 			"};",
-			"vector<long long> cur=dijkstra(1);",
+			"std::vector<long long> cur=dijkstra(1);",
 		],
 		"description": "コスト保持した隣接リストに対して、頂点1からダイクストラ法"
 	},
@@ -719,11 +716,11 @@
 		"prefix":"ciwgraph",
 		"body":[
       "int n,m;",
-      "cin>>n>>m;",
-      "vector<vector<pair<int,int>>> g(n+1);",
+      "std::cin>>n>>m;",
+      "std::vector<std::vector<pair<int,int>>> g(n+1);",
       "for(int i=0;i<m;i++){",
       "\tint a,b,c;",
-      "\tcin>>a>>b>>c;",
+      "\tstd::cin>>a>>b>>c;",
       "\tg[a].push_back({c,b});",
       "\tg[b].push_back({c,a});",
       "}",
@@ -769,7 +766,7 @@
 		"prefix":"ci4",
 		"body":[
 			"${1:int} ${2:n},${3:m},${4:k},${5:l};",
-			"cin>>${2:n}>>${3:m}>>${4:k}>>${5:l};"
+			"std::cin>>${2:n}>>${3:m}>>${4:k}>>${5:l};"
 		],
 		"description": "4変数の標準入力"
 	},
@@ -853,9 +850,9 @@
 			"// !gはコスト付き木であるとする",
 			"const long long INF=1e18;",
 			"auto dijkstra=[&](int start){",
-			"\tvector<long long> cur(n+1,-INF);//暫定距離を記録",
-			"\tvector<bool> confirmed(n+1);//最短距離が確定した頂点",
-			"\tpriority_queue<pair<long long,int>> pque;",
+			"\tstd::vector<long long> cur(n+1,-INF);//暫定距離を記録",
+			"\tstd::vector<bool> confirmed(n+1);//最短距離が確定した頂点",
+			"\tstd::priority_queue<pair<long long,int>> pque;",
 			"\tpque.push({0,start});",
 			"\tcur[start]=0;",
 			"\twhile(!pque.empty()){",
@@ -877,7 +874,7 @@
 			"\t\t\tif(!confirmed[v]){//隣接している未確定頂点についてcurを更新",
 			"\t\t\t\t// *正直こっちの確認は計算量削減にはあまり寄与しない",
 			"\t\t\t\t//各頂点の次数の総和は2Mなので、2M回しかキューには入らなく、!で示した部分があればそれぞれO(1)しか影響しない。",
-			"\t\t\t\tcur[v]=max(cur[v],c+cur[u]);//!暫定距離を更新していく",
+			"\t\t\t\tcur[v]=std::max(cur[v],c+cur[u]);//!暫定距離を更新していく",
 			"\t\t\t\t//!暫定距離の更新は現在の値とのchminを取りつつ更新することに注意",
 			"\t\t\t\t//!push時にcur更新、pop時にconfirm確定、という気持ちでよさそう",
 			"\t\t\t\t//!curは更新されるとは限らないことに注意",
@@ -888,7 +885,7 @@
 			"\treturn cur;",
 			"};",
 			"int s,t; //s,tは直径の両端のノード。",
-			"vector<long long> ds=dijkstra(1); //適当な頂点からダイクストラをして、そこからの最大コストを持つ頂点sを決める。",
+			"std::vector<long long> ds=dijkstra(1); //適当な頂点からダイクストラをして、そこからの最大コストを持つ頂点sを決める。",
 			"// *木のある頂点からの最大距離を持つ頂点は、直径のノードのどちらかになるので、sは直径のノードの片方となる",
 			"long long cost=-1; //costが最大のノードを探すので、costは取り得ない数にしておく。",
 			"for(int i=1;i<=n;i++){",
@@ -901,7 +898,7 @@
 			"\t\ts=i;",
 			"\t}",
 			"}",
-			"vector<long long> dt=dijkstra(s); //直径のノードの片方であるsからダイクストラをして、もう片方の直径のノードtを求める",
+			"std::vector<long long> dt=dijkstra(s); //直径のノードの片方であるsからダイクストラをして、もう片方の直径のノードtを求める",
 			"// 最大距離を持つノードがtとなる。",
 			"cost=-1; //costの初期化",
 			"for(int i=1;i<=n;i++){",
@@ -922,9 +919,9 @@
 			"// !gはコスト付き木であるとする",
 			"const long long INF=1e18;",
 			"auto dijkstra=[&](int start){",
-			"\tvector<long long> cur(n+1,-INF);//暫定距離を記録",
-			"\tvector<bool> confirmed(n+1);//最短距離が確定した頂点",
-			"\tpriority_queue<pair<long long,int>> pque;",
+			"\tstd::vector<long long> cur(n+1,-INF);//暫定距離を記録",
+			"\tstd::vector<bool> confirmed(n+1);//最短距離が確定した頂点",
+			"\tstd::priority_queue<pair<long long,int>> pque;",
 			"\tpque.push({0,start});",
 			"\tcur[start]=0;",
 			"\twhile(!pque.empty()){",
@@ -946,7 +943,7 @@
 			"\t\t\tif(!confirmed[v]){//隣接している未確定頂点についてcurを更新",
 			"\t\t\t\t// *正直こっちの確認は計算量削減にはあまり寄与しない",
 			"\t\t\t\t//各頂点の次数の総和は2Mなので、2M回しかキューには入らなく、!で示した部分があればそれぞれO(1)しか影響しない。",
-			"\t\t\t\tcur[v]=max(cur[v],c+cur[u]);//!暫定距離を更新していく",
+			"\t\t\t\tcur[v]=std::max(cur[v],c+cur[u]);//!暫定距離を更新していく",
 			"\t\t\t\t//!暫定距離の更新は現在の値とのchminを取りつつ更新することに注意",
 			"\t\t\t\t//!push時にcur更新、pop時にconfirm確定、という気持ちでよさそう",
 			"\t\t\t\t//!curは更新されるとは限らないことに注意",
@@ -957,7 +954,7 @@
 			"\treturn cur;",
 			"};",
 			"int s,t; //s,tは直径の両端のノード。",
-			"vector<long long> ds=dijkstra(1); //適当な頂点からダイクストラをして、そこからの最大コストを持つ頂点sを決める。",
+			"std::vector<long long> ds=dijkstra(1); //適当な頂点からダイクストラをして、そこからの最大コストを持つ頂点sを決める。",
 			"// *木のある頂点からの最大距離を持つ頂点は、直径のノードのどちらかになるので、sは直径のノードの片方となる",
 			"long long cost=-1; //costが最大のノードを探すので、costは取り得ない数にしておく。",
 			"for(int i=1;i<=n;i++){",
@@ -970,7 +967,7 @@
 			"\t\ts=i;",
 			"\t}",
 			"}",
-			"vector<long long> dt=dijkstra(s); //直径のノードの片方であるsからダイクストラをして、もう片方の直径のノードtを求める",
+			"std::vector<long long> dt=dijkstra(s); //直径のノードの片方であるsからダイクストラをして、もう片方の直径のノードtを求める",
 			"// 最大距離を持つノードがtとなる。",
 			"cost=-1; //costの初期化",
 			"for(int i=1;i<=n;i++){",
@@ -984,18 +981,18 @@
 			"}",
 			"// 直径のノードs,tからダイクストラをする。",
 			"// 直径の性質より、cur1[u]またはcur2[u]がuに対して最大コストを持つ頂点へのコストとなる。",
-			"vector<long long> cur1=dijkstra(s);",
-			"vector<long long> cur2=dijkstra(t);",
+			"std::vector<long long> cur1=dijkstra(s);",
+			"std::vector<long long> cur2=dijkstra(t);",
 			"for(int i=1;i<=n;i++){ //各頂点iについて最大コストを持つ頂点へのコストを調べる。",
 			"\tlong long ans=-1; //最大値を調べるので、ansは-1としておく。",
 			"\tif(i!=s){ //iからsへのコストを調べる時、iがsである時は考えない(頂点倍加などでコストに何か追加される場合、かつ自分への遷移は認めない時、これがないと自身へ遷移しうる)",
-			"\t\tans=max(ans,cur1[i]);",
+			"\t\tans=std::max(ans,cur1[i]);",
 			"\t}",
 			"\tif(i!=t){ //iからtへのコストを調べる時、sの時と同様に、iがtの時は考えない。",
-			"\t\tans=max(ans,cur2[i]);",
+			"\t\tans=std::max(ans,cur2[i]);",
 			"\t\t",
 			"\t}",
-			"\tcout<<ans<<'\n'; //iに対して最大コストを持つ頂点(s,tのいずれか)へのコストを出力",
+			"\tstd::cout<<ans<<'\n'; //iに対して最大コストを持つ頂点(s,tのいずれか)へのコストを出力",
 			"}",
 		],
 		"description": "コスト付き木の直径をダイクストラを用いて求める+直径の性質を用いて各頂点が持つ最大コストを持つ頂点に対するコストを計算する"
@@ -1010,35 +1007,37 @@
 	"coyes":{
 		"prefix":"coye",
 		"body":[
-			"cout<<\"Yes\"<<'\\n';",
+			"std::cout<<\"Yes\"<<'\\n';",
 		],
 		"description": "coye"
 	},
 	"cono":{
 		"prefix":"cono",
 		"body":[
-			"cout<<\"No\"<<'\\n';",
+			"std::cout<<\"No\"<<'\\n';",
 		],
 		"description": "cono"
 	},
 	"bitset":{
-		"prefix":"bs",
+		"prefix":"bitset",
 		"body":[
-			"bitset<${1:size}> ${2:bs}(${3:n});",
+			"std::bitset<${1:size}> ${2:bitset}(${3:bit});",
 			"//リファレンス:https://cpprefjp.github.io/reference/bitset/bitset.html",
-			"//雑メモ:coutで2進法表記で出力",
+			"//雑メモ:std::coutで2進法表記で出力",
 			"//整数から10ビットのビット集合を構築",
 			"//bitset<10> bs(5)",
 			"//論理和、論理積、排他的論理和もサポートしている",
 			"//他にも[]で任意のビットにアクセス、countで1になっているビットの数を取得など",
 			"//様々なメソッド、アクセッサー?、演算子などが定義されている",
+			"//! 注意:sizeは定数でしか指定できない",
+			"//! 注意:bitset.count()は返り値の型がstd::size_t(?)なのでintにキャストして使用しないとエラーになる",
 		],
 		"description": "bitset"
 	},
 	"stoi":{
 		"prefix":"stoi",
 		"body":[
-			"stoi(${1:str},0,${2:base});",
+			"std::stoi(${1:str},0,${2:base});",
 			"//str…変換したい文字列",
 			"//base...変換する文字列の基数(2進数を変換したいなら2とする)",
 		],
@@ -1047,7 +1046,7 @@
 	"stoll":{
 		"prefix":"stoll",
 		"body":[
-			"stoll(${1:str},0,${2:base});",
+			"std::stoll(${1:str},0,${2:base});",
 			"//str…変換したい文字列",
 			"//base...変換する文字列の基数(2進数を変換したいなら2とする)",
 		],
@@ -1056,7 +1055,7 @@
 	"to_string":{
 		"prefix":"tos",
 		"body":[
-			"to_string(${1:n})",
+			"std::to_string(${1:n})",
 		],
 		"description": "to_string"
 	},
@@ -1111,7 +1110,7 @@
 	"rsw":{
 		"prefix":"rsw",
 		"body":[
-			"vector<int> rsw(${1:n}+1);",
+			"std::vector<int> rsw(${1:n}+1);",
 			"for(int i=1;i<=${1:n};i++){",
 			"\trsw[i]+=${2:a}[i]+rsw[i-1];",
 			"}",
@@ -1137,10 +1136,10 @@
 	"imos":{
 		"prefix":"imos",
 		"body":[
-			"vector<int> imos(${1:d}+10);",
+			"std::vector<int> imos(${1:d}+10);",
 			"for(int i=0;i<${2:n};i++){",
 			"\tint ${3:l},${4:r};",
-			"\tcin>>${3:l}>>${4:r};",
+			"\tstd::cin>>${3:l}>>${4:r};",
 			"\timos[${3:l}]++;",
 			"\timos[${4:r}+1]--;",
 			"}",
@@ -1148,7 +1147,7 @@
 			"\timos[i]+=imos[i-1];",
 			"}",
 			"for(int i=1;i<=${1:d};i++){",
-			"\tcout<<imos[i]<<'\\n';",
+			"\tstd::cout<<imos[i]<<'\\n';",
 			"}",
 		],
 		"description": "imos"
@@ -1157,7 +1156,7 @@
 		"prefix":"ci5",
 		"body":[
 			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e};",
-			"cin>>${2:a}>>${3:b}>>${4:c}>>${5:d}>>${6:e};"
+			"std::cin>>${2:a}>>${3:b}>>${4:c}>>${5:d}>>${6:e};"
 		],
 		"description": "ci5"
 	},
@@ -1165,7 +1164,7 @@
 		"prefix":"ci6",
 		"body":[
 			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e},${7:f};",
-			"cin>>${2:a}>>${3:b}>>${4:c}>>${5:d}>>${6:e}>>${7:f};"
+			"std::cin>>${2:a}>>${3:b}>>${4:c}>>${5:d}>>${6:e}>>${7:f};"
 		],
 		"description": "ci6"
 	},
@@ -1173,14 +1172,14 @@
 		"prefix":"ci7",
 		"body":[
 			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e},${7:f},${8:g};",
-			"cin>>${2:a}>>${3:b}>>${4:c}>>${5:d}>>${6:e}>>${7:f}>>${8:g};"
+			"std::cin>>${2:a}>>${3:b}>>${4:c}>>${5:d}>>${6:e}>>${7:f}>>${8:g};"
 		],
 		"description": "ci7"
 	},
 	"rsw2":{
 		"prefix":"rsw2",
 		"body":[
-			"vector<vector<${0:int}>> rsw(${1:h}+1,vector<${0:int}>(${2:w}+1));",
+			"std::vector<std::vector<${0:int}>> rsw(${1:h}+1,std::vector<${0:int}>(${2:w}+1));",
 			"//列方向への累積和",
 			"for(int i=0;i<=${1:h};i++){",
 			"\tfor(int j=1;j<=${2:w};j++){",
@@ -1206,10 +1205,10 @@
 	"imos2":{
 		"prefix":"imos2",
 		"body":[
-			"vector<vector<int>> imos(${1:h}+2,vector<int>(${2:w}+2));",
+			"std::vector<std::vector<int>> imos(${1:h}+2,std::vector<int>(${2:w}+2));",
 			"for(int i=0;i<${3:n};i++){",
 			"\tint ${4:hidariueX},${5:hidariueY},${6:migisitaX},${7:migisitaY};",
-			"\tcin>>${4:hidariueX}>>${5:hidariueY}>>${6:migisitaX}>>${7:migisitaY};",
+			"\tstd::cin>>${4:hidariueX}>>${5:hidariueY}>>${6:migisitaX}>>${7:migisitaY};",
 			"\timos[${4:hidariueX}][${5:hidariueY}]++;",
 			"\timos[${4:hidariueX}][${7:migisitaY}+1]--;",
 			"\timos[${6:migisitaX}+1][${5:hidariueY}]--;",
@@ -1229,7 +1228,7 @@
 			"}",
 			"for(int i=1;i<=${1:h};i++){",
 			"\tfor(int j=1;j<=${2:w};j++){",
-			"\t\tcout<<imos[i][j]<<((j!=${2:w})?' ':'\\n');",
+			"\t\tstd::cout<<imos[i][j]<<((j!=${2:w})?' ':'\\n');",
 			"\t}",
 			"}",
 		],
@@ -1238,21 +1237,256 @@
 	"rsmax":{
 		"prefix":"rsmax",
 		"body":[
-			"vector<int> rsmax1(${1:n}+2),rsmax2(${1:n}+2);//1…左から,2…右から",
+			"std::vector<int> rsmax1(${1:n}+2),rsmax2(${1:n}+2);//1…左から,2…右から",
 			"for(int i=1;i<=${1:n};i++){",
-			"\trsmax1[i]=max(rsmax1[i-1],${2:a}[i]);",
+			"\trsmax1[i]=std::max(rsmax1[i-1],${2:a}[i]);",
 			"}",
 			"for(int i=${1:n};i>=1;i--){",
-			"\trsmax2[i]=max(rsmax2[i+1],${2:a}[i]);",
+			"\trsmax2[i]=std::max(rsmax2[i+1],${2:a}[i]);",
 			"}",
 			"int ${3:d};",
-			"cin>>${3:d};",
+			"std::cin>>${3:d};",
 			"for(int i=0;i<${3:d};i++){",
 			"\tint ${4:l},${5:r};",
-			"\tcin>>${4:l}>>${5:r};",
-			"\tcout<<max(rsmax1[${4:l}-1],rsmax2[${5:r}+1])<<'\\n';",
+			"\tstd::cin>>${4:l}>>${5:r};",
+			"\tstd::cout<<std::max(rsmax1[${4:l}-1],rsmax2[${5:r}+1])<<'\\n';",
 			"}",
 		],
 		"description": "rsmax"
+	},
+	"substr":{
+		"prefix":"substr",
+		"body":[
+			"${1:s}.substr(${2:startIdx},${3:length})",
+		],
+		"description": "substr"
+	},
+	"replace":{
+		"prefix":"replace",
+		"body":[
+			"${1:vec}.replace(${1:vec}.begin(),${1:vec}.end(),${2:beforeChar},${3:afterChar})",
+		],
+		"description": "replace"
+	},
+	"all_of":{
+		"prefix":"allof",
+		"body":[
+			"all_of(${1:vec}.begin(),${1:vec}.end(),[${2:&}](${3:int} ${4:val}){ ${5:predicate} })",
+		],
+		"description": "イテレータ範囲[first,last)の全ての要素が条件を満たすかを判定する。https://cpprefjp.github.io/reference/algorithm/all_of.html"
+	},
+	"lamdaketa":{
+		"prefix":"lamdaketa",
+		"body":[
+			"auto keta=[&](${1:int} val){",
+			"\tint ret=0;",
+			"\twhile(val>0){",
+			"\t\tval/=10;",
+			"\t\tret++;",
+			"\t}",
+			"\treturn ret;",
+			"};",
+		],
+		"description": "lamdaketa"
+	},
+	"yakusuCnt":{
+		"prefix":"yakusuCnt",
+		"body":[
+			"auto yakusuCnt=[&](${1:int} val){",
+			"\tint ret=0;",
+			"\tfor(${1:int} i=1;i<=val;i++){",
+			"\t\tif(val%i==0){",
+			"\t\t\tret++;",
+			"\t\t}",
+			"\t}",
+			"\treturn ret;",
+			"};",
+		],
+		"description": "valの約数の個数を求める。愚直な計算なのでO(val)。"
+	},
+	"std":{
+		"prefix":"std",
+		"body":[
+			"std::",
+		],
+		"description": "std"
+	},
+	"std::std::cin.tie(nullptr)":{
+		"prefix":"std::cin.tie(nullptr)",
+		"body":[
+			"std::cin.tie(nullptr);//標準入力時に出力ストリームバッファのフラッシュ(バッファの初期化)をしないようにする。そのため入力処理を高速化できる。",
+		],
+		"description": "標準入力時に出力ストリームバッファのフラッシュ(バッファの初期化)をしないようにする。そのため入力処理を高速化できる。"
+	},
+	"std::ios_base::sync_with_stdio(false)":{
+		"prefix":"sync_with_stdio(false)",
+		"body":[
+			"std::ios_base::sync_with_stdio(false);//<cstdio>での入出力関数(scanf,prinfなど)と<iostream>での入出力関数(std::cin,std::coutなど)のストリームの同期を解除する。同期処理が無くなり、入出力の処理を高速化できる。",
+		],
+		"description": "<cstdio>での入出力関数(scanf,prinfなど)と<iostream>での入出力関数(std::cin,std::coutなど)のストリームの同期を解除する。同期処理が無くなり、入出力の処理を高速化できる。"
+	},
+	"#include <iostream>":{
+		"prefix":"inios",
+		"body":[
+			"#include <iostream>",
+		],
+		"description": ""
+	},
+	"#include <algorithm>":{
+		"prefix":"inalg",
+		"body":[
+			"#include <algorithm>",
+		],
+		"description": ""
+	},
+	"#include <vector>":{
+		"prefix":"invec",
+		"body":[
+			"#include <vector>",
+		],
+		"description": ""
+	},
+	"#include <string>":{
+		"prefix":"instr",
+		"body":[
+			"#include <string>",
+		],
+		"description": ""
+	},
+	"#include <set>":{
+		"prefix":"inset",
+		"body":[
+			"#include <set>",
+		],
+		"description": ""
+	},
+	"#include <unordered_set>":{
+		"prefix":"inunset",
+		"body":[
+			"#include <unordered_set>",
+		],
+		"description": ""
+	},
+	"#include <stack>":{
+		"prefix":"insta",
+		"body":[
+			"#include <unordered_set>",
+		],
+		"description": ""
+	},
+	"#include <queue>":{
+		"prefix":"inque",
+		"body":[
+			"#include <queue>",
+		],
+		"description": ""
+	},
+	"#include <map>":{
+		"prefix":"inmap",
+		"body":[
+			"#include <map>",
+		],
+		"description": ""
+	},
+	"#include <unordered_map>":{
+		"prefix":"inunmap",
+		"body":[
+			"#include <unordered_map>",
+		],
+		"description": ""
+	},
+	"#include <bitset>":{
+		"prefix":"inbitset",
+		"body":[
+			"#include <bitset>",
+		],
+		"description": ""
+	},
+	"std::string":{
+		"prefix":"string",
+		"body":[
+			"std::string",
+		],
+		"description": "std::string"
+	},
+	"std::cin":{
+		"prefix":"cin",
+		"body":[
+			"std::cin",
+		],
+		"description": "std::cin"
+	},
+	"std::cout":{
+		"prefix":"cout",
+		"body":[
+			"std::cout",
+		],
+		"description": "std::cout"
+	},
+	"bitzentansaku":{
+		"prefix":"bitzentansaku",
+		"body":[
+			"for(int bit=0;bit<(1<<${1:n});bit++){",
+			"\tstd::bitset<${2:size}> ${3:bitset}(${4:bit});",
+			"\t//リファレンス:https://cpprefjp.github.io/reference/bitset/bitset.html",
+			"\t//雑メモ:std::coutで2進法表記で出力",
+			"\t//整数から10ビットのビット集合を構築",
+			"\t//bitset<10> bs(5)",
+			"\t//論理和、論理積、排他的論理和もサポートしている",
+			"\t//* []で任意のビットにアクセス、countで1になっているビットの数を取得など",
+			"\t//! 注意:sizeは定数でしか指定できないため、十分なサイズを定義する",
+			"\t//! 注意:bitset.count()は返り値の型がstd::size_t(?)なのでintにキャストして使用しないとエラーになる",
+			"\t//! 注意:ビットへのアクセスは0-indexed",
+			"}",
+		],
+		"description": "bitzentansaku"
+	},
+	"#include <utility>":{
+		"prefix":"inuti",
+		"body":[
+			"#include <utility>",
+		],
+		"description": "#include <utility>"
+	},
+	"std::pair":{
+		"prefix":"pair",
+		"body":[
+			"std::pair<${1:int},${1:int}>",
+		],
+		"description": "std::pair"
+	},
+	"std::tuple":{
+		"prefix":"tuple",
+		"body":[
+			"std::tuple<${1:int},${1:int},${1:int}>",
+		],
+		"description": "std::tuple"
+	},
+	"std::max":{
+		"prefix":"max",
+		"body":[
+			"std::max($1)",
+		],
+		"description": "std::max"
+	},
+	"std::min":{
+		"prefix":"min",
+		"body":[
+			"std::min($1)",
+		],
+		"description": "std::min"
+	},
+	"erase":{
+		"prefix":"erase",
+		"body":[
+			"std::sort(${1:vec}.begin(),${1:vec}.end());",
+			"${1:vec}.erase(std::unique(${1:vec}.begin(),${1:vec}.end()),${1:vec}.end());",
+			"//unique…https://cpprefjp.github.io/reference/algorithm/unique.html",
+			"//* unique…[first,last)から重複した要素を取り除ける。隣り合った重複要素を除いた要素を、範囲の先頭に集める。",
+			"//* コンテナから実際に要素を削除する場合、関数の戻り値として、先頭に集められた重複なし範囲の末尾の次を指すイテレータが返るため、コンテナのerase()メンバ関数などを呼び出し、削除を行う。",
+			"//erase…https://cpprefjp.github.io/reference/vector/vector/erase.html",
+			"//* erase…[first,last)で示されるイテレータ範囲の要素が削除される。",
+		],
+		"description": "erase"
 	},
 }
