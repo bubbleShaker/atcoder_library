@@ -100,7 +100,8 @@
 	"setprecision":{
 		"prefix":"setprecision",
 		"body":[
-			"std::cout<<std::fixed<<std::setprecision(10);"
+			"// #include<iomanip>",
+			"std::cout<<std::fixed<<std::setprecision(10);",
 		],
 		"description": "setpresicionの指定"
 	},
@@ -838,7 +839,7 @@
 		"description": "1indexed-for文"
 	},
 	"push_back":{
-		"prefix":"push_back",
+		"prefix":"pb",
 		"body":[
 			"push_back($1);",
 		],
@@ -1412,14 +1413,14 @@
 	"std::cin":{
 		"prefix":"cin",
 		"body":[
-			"std::cin",
+			"std::cin>>",
 		],
 		"description": "std::cin"
 	},
 	"std::cout":{
 		"prefix":"cout",
 		"body":[
-			"std::cout",
+			"std::cout<<",
 		],
 		"description": "std::cout"
 	},
@@ -1488,5 +1489,63 @@
 			"//* erase…[first,last)で示されるイテレータ範囲の要素が削除される。",
 		],
 		"description": "erase"
+	},
+	"struct":{
+		"prefix":"struct",
+		"body":[
+			"struct ${1:name}{",
+			"\t$2",
+			"};",
+		],
+		"description": "struct"
+	},
+	"lamdafact":{
+		"prefix":"ladmafact",
+		"body":[
+			"auto fact=[&](${1:int} n){",
+			"\t${1:int} ret=1;",
+			"\twhile(n>0){",
+			"\t\tret*=n;",
+			"\t\tn--;",
+			"\t}",
+			"\treturn ret;",
+			"};",
+		],
+		"description": "ladmafact"
+	},
+	"iota":{
+		"prefix":"iota",
+		"body":[
+			"// #include<numeric>",
+			"std::iota(${1:vec}.begin(),${1:vec}.end(),${2:value});",
+		],
+		"description": "値の範囲[value,value+(last-first))を前から順番に範囲[first,last)の各要素に代入する。"
+	},
+	"junretuzentansaku":{
+		"prefix":"junretuzentansaku",
+		"body":[
+			"std::vector<${1:int}> ${2:p}(${3:n});",
+			"// #include<numeric>",
+			"std::iota(${2:p}.begin(),${2:p}.end(),${4:value});",
+			"do{",
+			"\tfor(int i=0;i<${3:n}-1;i++){",
+			"\t\t//use ${2:p}[i],${2:p}[i+1]",
+			"\t\t$5",
+			"\t}",
+			"}while(std::next_permutation(${2:p}.begin(),${2:p}.end()));",
+		],
+		"description": "junretuzentansaku"
+	},
+	"find":{
+		"prefix":"find",
+		"body":[
+			"//find…https://cpprefjp.github.io/reference/algorithm/find.html",
+			"//[first,last)内のイテレータiについて、*i==valueであるような最初のイテレータを返す。そのようなイテレータが見つからなかった場合はlastを返す。",
+			"// #include <algorithm>",
+			"if(std::find(${1:vec}.begin(),${1:vec}.end(),${2:value})==${1:vec}.end()){// valueが見つからなかった場合",
+			"\t$3",
+			"}",
+		],
+		"description": "find"
 	},
 }
