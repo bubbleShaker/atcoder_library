@@ -1,7 +1,31 @@
-"std::sort(${1:vec}.begin(),${1:vec}.end());",
-"${1:vec}.erase(std::unique(${1:vec}.begin(),${1:vec}.end()),${1:vec}.end());",
-"//unique…https://cpprefjp.github.io/reference/algorithm/unique.html",
-"//* unique…[first,last)から重複した要素を取り除ける。隣り合った重複要素を除いた要素を、範囲の先頭に集める。",
-"//* コンテナから実際に要素を削除する場合、関数の戻り値として、先頭に集められた重複なし範囲の末尾の次を指すイテレータが返るため、コンテナのerase()メンバ関数などを呼び出し、削除を行う。",
-"//erase…https://cpprefjp.github.io/reference/vector/vector/erase.html",
-"//* erase…[first,last)で示されるイテレータ範囲の要素が削除される。",
+0x70
+0x69
+0x63
+0x6f
+0x43
+0x54
+0x46
+0x7b
+0x41
+0x53
+0x43
+0x49
+0x49
+0x5f
+0x49
+0x53
+0x5f
+0x45
+0x41
+0x53
+0x59
+0x5f
+0x33
+0x43
+0x46
+0x34
+0x42
+0x46
+0x41
+0x44
+0x7d

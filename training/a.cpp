@@ -1,7 +1,8 @@
 #include <iostream>
+#include <algorithm>
 int main(){
-  int a,b,c;
-  std::cin>>a>>b>>c;
-  std::cout<<21-(a+b+c)<<'\n';
+  int n,m,k;
+  std::cin>>n>>m>>k;
+  std::cout<<std::min({n+m,m+k,k+n})<<'\n';
   return 0;
 }
