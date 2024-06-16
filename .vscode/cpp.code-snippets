@@ -738,14 +738,14 @@
 	"sort":{
 		"prefix":"sort",
 		"body":[
-			"sort(${1:vec}.begin(),${1:vec}.end());"
+			"std::sort(${1:vec}.begin(),${1:vec}.end());"
 		],
 		"description": "昇順ソート"
 	},
 	"rsort":{
 		"prefix":"rsort",
 		"body":[
-			"sort(${1:vec}.rbegin(),${1:vec}.rend());"
+			"std::sort(${1:vec}.rbegin(),${1:vec}.rend());"
 		],
 		"description": "降順ソート"
 	},
@@ -1137,17 +1137,17 @@
 	"imos":{
 		"prefix":"imos",
 		"body":[
-			"std::vector<int> imos(${1:d}+10);",
-			"for(int i=0;i<${2:n};i++){",
-			"\tint ${3:l},${4:r};",
-			"\tstd::cin>>${3:l}>>${4:r};",
-			"\timos[${3:l}]++;",
-			"\timos[${4:r}+1]--;",
+			"std::vector<${1:int}> imos(${2:d}+10);",
+			"for(int i=0;i<${3:n};i++){",
+			"\tint ${4:l},${5:r};",
+			"\tstd::cin>>${4:l}>>${5:r};",
+			"\timos[${4:l}]++;",
+			"\timos[${5:r}+1]--;",
 			"}",
-			"for(int i=1;i<=${1:d};i++){",
+			"for(int i=1;i<=${2:d};i++){",
 			"\timos[i]+=imos[i-1];",
 			"}",
-			"for(int i=1;i<=${1:d};i++){",
+			"for(int i=${6:0};i<=${2:d};i++){",
 			"\tstd::cout<<imos[i]<<'\\n';",
 			"}",
 		],
