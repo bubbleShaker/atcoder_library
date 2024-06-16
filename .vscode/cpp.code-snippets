@@ -839,7 +839,7 @@
 		"description": "1indexed-for文"
 	},
 	"push_back":{
-		"prefix":"push_back",
+		"prefix":"pb",
 		"body":[
 			"push_back($1);",
 		],
@@ -1535,5 +1535,17 @@
 			"}while(std::next_permutation(${2:p}.begin(),${2:p}.end()));",
 		],
 		"description": "junretuzentansaku"
+	},
+	"find":{
+		"prefix":"find",
+		"body":[
+			"//find…https://cpprefjp.github.io/reference/algorithm/find.html",
+			"//[first,last)内のイテレータiについて、*i==valueであるような最初のイテレータを返す。そのようなイテレータが見つからなかった場合はlastを返す。",
+			"// #include <algorithm>",
+			"if(std::find(${1:vec}.begin(),${1:vec}.end(),${2:value})==${1:vec}.end()){// valueが見つからなかった場合",
+			"\t$3",
+			"}",
+		],
+		"description": "find"
 	},
 }
