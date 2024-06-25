@@ -1505,8 +1505,7 @@
 			"auto fact=[&](${1:int} n){",
 			"\t${1:int} ret=1;",
 			"\twhile(n>0){",
-			"\t\tret*=n;",
-			"\t\tn--;",
+			"\t\tret*=n--;",
 			"\t}",
 			"\treturn ret;",
 			"};",
@@ -1547,5 +1546,88 @@
 			"}",
 		],
 		"description": "find"
+	},
+	"setw+setfill":{
+		"prefix":"setw+setfill",
+		"body":[
+			"// include <iomanip>",
+			"std::cout<<std::setw(${1:width})<<std::setfill(${2:'0'})<<${3:num}<<'\\n';",
+		],
+		"description": "setw+setfill"
+	},
+	"powll":{
+		"prefix":"powll",
+		"body":[
+			"auto powll=[&](long long a,int b){",
+			"\tlong long ret=1;",
+			"\tfor(int i=0;i<b;i++){",
+			"\t\tret*=a;",
+			"\t}",
+			"\treturn ret;",
+			"};",
+		],
+		"description": "powll"
+	},
+	"stable_sort":{
+		"prefix":"stable_sort",
+		"body":[
+			"std::stable_sort(${1:vec}.begin(),${1:vec}.end());"
+		],
+		"description": "昇順ソート"
+	},
+	"stable_rsort":{
+		"prefix":"stable_rsort",
+		"body":[
+			"std::stable_sort(${1:vec}.rbegin(),${1:vec}.rend());"
+		],
+		"description": "降順ソート"
+	},
+	"max_element":{
+		"prefix":"max_element",
+		"body":[
+			"// #include <algorithm>",
+			"auto ${1:max}=*std::max_element(${2:vec}.begin(),${2:vec}.end());"
+		],
+		"description": "max_element"
+	},
+	"min_element":{
+		"prefix":"min_element",
+		"body":[
+			"// #include <algorithm>",
+			"auto ${1:min}=*std::min_element(${2:vec}.begin(),${2:vec}.end());"
+		],
+		"description": "min_element"
+	},
+	"cive":{
+		"prefix":"cive",
+		"body":[
+			"std::vector<${1:int}> ${2:a}(${3:n});",
+			"for(int i=0;i<${3:n};i++){",
+			"\tstd::cin>>${2:a}[i];",
+			"}",
+		],
+		"description": "cive"
+	},
+	"cive2":{
+		"prefix":"cive2",
+		"body":[
+			"std::vector<${1:int}> ${2:a}(${4:n}),${3:b}(${4:n});",
+			"for(int i=0;i<${4:n};i++){",
+			"\tstd::cin>>${2:a}[i]>>${3:b}[i];",
+			"}",
+		],
+		"description": "cive2"
+	},
+	"civedir2":{
+		"prefix":"civedir2",
+		"body":[
+			"std::vector<std::vector<${1:int}>> ${2:vec}(${3:n},std::vector<${1:int}>(${4:m}));",
+			"for(int i=0;i<${3:n};i++){",
+			"\tfor(int j=0;j<${4:m};j++){",
+			"\t\tstd::cin>>${2:vec}[i][j];",
+			"\t}",
+			"}",
+		],
+		"description": "civedir2"
 	},
 }

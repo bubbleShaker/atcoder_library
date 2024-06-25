@@ -1,22 +1,26 @@
 #include <iostream>
-#include <cmath>
+#include <vector>
+#include <algorithm>
 int main(){
-  long long x,k,d;
-  std::cin>>x>>k>>d;
-  long long xx=x;
-  if(x<0){
-    x+=(((std::abs(x)/d)<k)?std::abs(x)/d:k)*d;
-    k-=(((std::abs(xx)/d)<k)?std::abs(xx)/d:k);
-    if(k%2&&k!=0){
-      x+=d;
+  int p;
+  std::cin>>p;
+  auto fact=[&](int n){
+    int ret=1;
+    while(n>0){
+      ret*=n--;
     }
-  }else{
-    x-=(((std::abs(x)/d)<k)?std::abs(x)/d:k)*d;
-    k-=(((std::abs(xx)/d)<k)?std::abs(xx)/d:k);
-    if(k%2&&k!=0){
-      x-=d;
+    return ret;
+  };
+  std::vector<int> cnt(11,100);
+  int ans=0;
+  for(int i=10;i>=0;i--){
+    if(p==0){
+      break;
     }
+    int c=p/fact(i);
+    p-=std::min(100,c)*fact(i);
+    ans+=std::min(100,c);
   }
-  std::cout<<std::abs(x)<<'\n';
+  std::cout<<ans<<'\n';
   return 0;
 }

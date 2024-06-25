@@ -1,0 +1,6 @@
+"std::vector<std::vector<${1:int}>> ${2:vec}(${3:n},std::vector<int>(${4:m}));",
+"for(int i=0;i<${3:n};i++){",
+"\tfor(int j=0;j<${4:m};j++){",
+"\t\tstd::cin>>${2:vec}[i][j];",
+"\t}",
+"}",
