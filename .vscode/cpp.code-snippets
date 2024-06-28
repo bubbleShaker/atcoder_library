@@ -10,27 +10,51 @@
 		],
 		"description":"main関数"
 	},
-	"ci":{
-		"prefix":"ci",
+	"ci1n":{
+		"prefix":"ci1n",
 		"body":[
 			"${1:int} ${2:n};",
 			"std::cin>>${2:n};"
 		],
 		"description": "標準入力"
 	},
-	"ci2":{
-		"prefix":"ci2",
+	"ci1a":{
+		"prefix":"ci1a",
+		"body":[
+			"${1:int} ${2:a};",
+			"std::cin>>${2:a};"
+		],
+		"description": "標準入力"
+	},
+	"ci2n":{
+		"prefix":"ci2n",
 		"body":[
 			"${1:int} ${2:n},${3:m};",
 			"std::cin>>${2:n}>>${3:m};"
 		],
 		"description": "2変数の標準入力"
 	},
-	"ci3":{
-		"prefix":"ci3",
+	"ci2a":{
+		"prefix":"ci2a",
+		"body":[
+			"${1:int} ${2:a},${3:b};",
+			"std::cin>>${2:a}>>${3:b};"
+		],
+		"description": "2変数の標準入力"
+	},
+	"ci3n":{
+		"prefix":"ci3n",
 		"body":[
 			"${1:int} ${2:n},${3:m},${4:k};",
 			"std::cin>>${2:n}>>${3:m}>>${4:k};"
+		],
+		"description": "3変数の標準入力"
+	},
+	"ci3a":{
+		"prefix":"ci3a",
+		"body":[
+			"${1:int} ${2:a},${3:b},${4:c};",
+			"std::cin>>${2:a}>>${3:b}>>${4:c};"
 		],
 		"description": "3変数の標準入力"
 	},
@@ -763,11 +787,19 @@
 		],
 		"description": "cerr2"
 	},
-	"ci4":{
-		"prefix":"ci4",
+	"ci4n":{
+		"prefix":"ci4n",
 		"body":[
 			"${1:int} ${2:n},${3:m},${4:k},${5:l};",
 			"std::cin>>${2:n}>>${3:m}>>${4:k}>>${5:l};"
+		],
+		"description": "4変数の標準入力"
+	},
+	"ci4a":{
+		"prefix":"ci4a",
+		"body":[
+			"${1:int} ${2:a},${3:b},${4:c},${5:d};",
+			"std::cin>>${2:a}>>${3:b}>>${4:c}>>${5:d};"
 		],
 		"description": "4変数の標準入力"
 	},
@@ -1153,7 +1185,7 @@
 		],
 		"description": "imos"
 	},
-	"ci5":{
+	"ci5a":{
 		"prefix":"ci5",
 		"body":[
 			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e};",
@@ -1161,7 +1193,7 @@
 		],
 		"description": "ci5"
 	},
-	"ci6":{
+	"ci6a":{
 		"prefix":"ci6",
 		"body":[
 			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e},${7:f};",
@@ -1169,7 +1201,7 @@
 		],
 		"description": "ci6"
 	},
-	"ci7":{
+	"ci7a":{
 		"prefix":"ci7",
 		"body":[
 			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e},${7:f},${8:g};",
@@ -1538,12 +1570,7 @@
 	"find":{
 		"prefix":"find",
 		"body":[
-			"//find…https://cpprefjp.github.io/reference/algorithm/find.html",
-			"//[first,last)内のイテレータiについて、*i==valueであるような最初のイテレータを返す。そのようなイテレータが見つからなかった場合はlastを返す。",
-			"// #include <algorithm>",
-			"if(std::find(${1:vec}.begin(),${1:vec}.end(),${2:value})==${1:vec}.end()){// valueが見つからなかった場合",
-			"\t$3",
-			"}",
+			"std::find(${1:vec}.begin(),${1:vec}.end(),${2:value})",
 		],
 		"description": "find"
 	},
@@ -1629,5 +1656,12 @@
 			"}",
 		],
 		"description": "civedir2"
+	},
+	"is_permutation":{
+		"prefix":"is_permutation",
+		"body":[
+			"std::is_permutation(${1:vec}.begin(),{1:vec}.end(),{2:permutation}.begin())",
+		],
+		"description": "is_permutation"
 	},
 }
