@@ -1272,7 +1272,7 @@
 	"all_of":{
 		"prefix":"allof",
 		"body":[
-			"all_of(${1:vec}.begin(),${1:vec}.end(),[${2:&}](${3:int} ${4:val}){ ${5:predicate} })",
+			"all_of(${1:vec}.begin(),${1:vec}.end(),[${2:&}](${3:int} ${4:val}){ return ${5:predicate}; })",
 		],
 		"description": "イテレータ範囲[first,last)の全ての要素が条件を満たすかを判定する。https://cpprefjp.github.io/reference/algorithm/all_of.html"
 	},
