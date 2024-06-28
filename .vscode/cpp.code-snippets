@@ -10,27 +10,51 @@
 		],
 		"description":"main関数"
 	},
-	"ci":{
-		"prefix":"ci",
+	"ci1n":{
+		"prefix":"ci1n",
 		"body":[
 			"${1:int} ${2:n};",
 			"std::cin>>${2:n};"
 		],
 		"description": "標準入力"
 	},
-	"ci2":{
-		"prefix":"ci2",
+	"ci1a":{
+		"prefix":"ci1a",
+		"body":[
+			"${1:int} ${2:a};",
+			"std::cin>>${2:a};"
+		],
+		"description": "標準入力"
+	},
+	"ci2n":{
+		"prefix":"ci2n",
 		"body":[
 			"${1:int} ${2:n},${3:m};",
 			"std::cin>>${2:n}>>${3:m};"
 		],
 		"description": "2変数の標準入力"
 	},
-	"ci3":{
-		"prefix":"ci3",
+	"ci2a":{
+		"prefix":"ci2a",
+		"body":[
+			"${1:int} ${2:a},${3:b};",
+			"std::cin>>${2:a}>>${3:b};"
+		],
+		"description": "2変数の標準入力"
+	},
+	"ci3n":{
+		"prefix":"ci3n",
 		"body":[
 			"${1:int} ${2:n},${3:m},${4:k};",
 			"std::cin>>${2:n}>>${3:m}>>${4:k};"
+		],
+		"description": "3変数の標準入力"
+	},
+	"ci3a":{
+		"prefix":"ci3a",
+		"body":[
+			"${1:int} ${2:a},${3:b},${4:c};",
+			"std::cin>>${2:a}>>${3:b}>>${4:c};"
 		],
 		"description": "3変数の標準入力"
 	},
@@ -738,14 +762,14 @@
 	"sort":{
 		"prefix":"sort",
 		"body":[
-			"sort(${1:vec}.begin(),${1:vec}.end());"
+			"std::sort(${1:vec}.begin(),${1:vec}.end());"
 		],
 		"description": "昇順ソート"
 	},
 	"rsort":{
 		"prefix":"rsort",
 		"body":[
-			"sort(${1:vec}.rbegin(),${1:vec}.rend());"
+			"std::sort(${1:vec}.rbegin(),${1:vec}.rend());"
 		],
 		"description": "降順ソート"
 	},
@@ -763,11 +787,19 @@
 		],
 		"description": "cerr2"
 	},
-	"ci4":{
-		"prefix":"ci4",
+	"ci4n":{
+		"prefix":"ci4n",
 		"body":[
 			"${1:int} ${2:n},${3:m},${4:k},${5:l};",
 			"std::cin>>${2:n}>>${3:m}>>${4:k}>>${5:l};"
+		],
+		"description": "4変数の標準入力"
+	},
+	"ci4a":{
+		"prefix":"ci4a",
+		"body":[
+			"${1:int} ${2:a},${3:b},${4:c},${5:d};",
+			"std::cin>>${2:a}>>${3:b}>>${4:c}>>${5:d};"
 		],
 		"description": "4変数の標準入力"
 	},
@@ -1137,23 +1169,23 @@
 	"imos":{
 		"prefix":"imos",
 		"body":[
-			"std::vector<int> imos(${1:d}+10);",
-			"for(int i=0;i<${2:n};i++){",
-			"\tint ${3:l},${4:r};",
-			"\tstd::cin>>${3:l}>>${4:r};",
-			"\timos[${3:l}]++;",
-			"\timos[${4:r}+1]--;",
+			"std::vector<${1:int}> imos(${2:d}+10);",
+			"for(int i=0;i<${3:n};i++){",
+			"\tint ${4:l},${5:r};",
+			"\tstd::cin>>${4:l}>>${5:r};",
+			"\timos[${4:l}]++;",
+			"\timos[${5:r}+1]--;",
 			"}",
-			"for(int i=1;i<=${1:d};i++){",
+			"for(int i=1;i<=${2:d};i++){",
 			"\timos[i]+=imos[i-1];",
 			"}",
-			"for(int i=1;i<=${1:d};i++){",
+			"for(int i=${6:0};i<=${2:d};i++){",
 			"\tstd::cout<<imos[i]<<'\\n';",
 			"}",
 		],
 		"description": "imos"
 	},
-	"ci5":{
+	"ci5a":{
 		"prefix":"ci5",
 		"body":[
 			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e};",
@@ -1161,7 +1193,7 @@
 		],
 		"description": "ci5"
 	},
-	"ci6":{
+	"ci6a":{
 		"prefix":"ci6",
 		"body":[
 			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e},${7:f};",
@@ -1169,7 +1201,7 @@
 		],
 		"description": "ci6"
 	},
-	"ci7":{
+	"ci7a":{
 		"prefix":"ci7",
 		"body":[
 			"${1:int} ${2:a},${3:b},${4:c},${5:d},${6:e},${7:f},${8:g};",
@@ -1505,8 +1537,7 @@
 			"auto fact=[&](${1:int} n){",
 			"\t${1:int} ret=1;",
 			"\twhile(n>0){",
-			"\t\tret*=n;",
-			"\t\tn--;",
+			"\t\tret*=n--;",
 			"\t}",
 			"\treturn ret;",
 			"};",
@@ -1539,13 +1570,98 @@
 	"find":{
 		"prefix":"find",
 		"body":[
-			"//find…https://cpprefjp.github.io/reference/algorithm/find.html",
-			"//[first,last)内のイテレータiについて、*i==valueであるような最初のイテレータを返す。そのようなイテレータが見つからなかった場合はlastを返す。",
-			"// #include <algorithm>",
-			"if(std::find(${1:vec}.begin(),${1:vec}.end(),${2:value})==${1:vec}.end()){// valueが見つからなかった場合",
-			"\t$3",
-			"}",
+			"std::find(${1:vec}.begin(),${1:vec}.end(),${2:value})",
 		],
 		"description": "find"
+	},
+	"setw+setfill":{
+		"prefix":"setw+setfill",
+		"body":[
+			"// include <iomanip>",
+			"std::cout<<std::setw(${1:width})<<std::setfill(${2:'0'})<<${3:num}<<'\\n';",
+		],
+		"description": "setw+setfill"
+	},
+	"powll":{
+		"prefix":"powll",
+		"body":[
+			"auto powll=[&](long long a,int b){",
+			"\tlong long ret=1;",
+			"\tfor(int i=0;i<b;i++){",
+			"\t\tret*=a;",
+			"\t}",
+			"\treturn ret;",
+			"};",
+		],
+		"description": "powll"
+	},
+	"stable_sort":{
+		"prefix":"stable_sort",
+		"body":[
+			"std::stable_sort(${1:vec}.begin(),${1:vec}.end());"
+		],
+		"description": "昇順ソート"
+	},
+	"stable_rsort":{
+		"prefix":"stable_rsort",
+		"body":[
+			"std::stable_sort(${1:vec}.rbegin(),${1:vec}.rend());"
+		],
+		"description": "降順ソート"
+	},
+	"max_element":{
+		"prefix":"max_element",
+		"body":[
+			"// #include <algorithm>",
+			"auto ${1:max}=*std::max_element(${2:vec}.begin(),${2:vec}.end());"
+		],
+		"description": "max_element"
+	},
+	"min_element":{
+		"prefix":"min_element",
+		"body":[
+			"// #include <algorithm>",
+			"auto ${1:min}=*std::min_element(${2:vec}.begin(),${2:vec}.end());"
+		],
+		"description": "min_element"
+	},
+	"cive":{
+		"prefix":"cive",
+		"body":[
+			"std::vector<${1:int}> ${2:a}(${3:n});",
+			"for(int i=0;i<${3:n};i++){",
+			"\tstd::cin>>${2:a}[i];",
+			"}",
+		],
+		"description": "cive"
+	},
+	"cive2":{
+		"prefix":"cive2",
+		"body":[
+			"std::vector<${1:int}> ${2:a}(${4:n}),${3:b}(${4:n});",
+			"for(int i=0;i<${4:n};i++){",
+			"\tstd::cin>>${2:a}[i]>>${3:b}[i];",
+			"}",
+		],
+		"description": "cive2"
+	},
+	"civedir2":{
+		"prefix":"civedir2",
+		"body":[
+			"std::vector<std::vector<${1:int}>> ${2:vec}(${3:n},std::vector<${1:int}>(${4:m}));",
+			"for(int i=0;i<${3:n};i++){",
+			"\tfor(int j=0;j<${4:m};j++){",
+			"\t\tstd::cin>>${2:vec}[i][j];",
+			"\t}",
+			"}",
+		],
+		"description": "civedir2"
+	},
+	"is_permutation":{
+		"prefix":"is_permutation",
+		"body":[
+			"std::is_permutation(${1:vec}.begin(),{1:vec}.end(),{2:permutation}.begin())",
+		],
+		"description": "is_permutation"
 	},
 }

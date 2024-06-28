@@ -88,6 +88,7 @@
     "valarray": "cpp",
     "variant": "cpp",
     "expected": "cpp",
-    "spanstream": "cpp"
+    "spanstream": "cpp",
+    "modint": "cpp"
   }
 }
