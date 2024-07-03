@@ -37,6 +37,11 @@ int main(){
   std::cout<<"1日に解く茶diff問題の数"<<'\n';
   std::cout<<brown_cnt<<'\n';
   
+  const double green_tee=130;
+  double green_cnt=day_tee/green_tee;
+  std::cout<<"1日に解く緑diff問題の数"<<'\n';
+  std::cout<<green_cnt<<'\n';
+  
   return 0;
 }
 
