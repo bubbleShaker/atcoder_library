@@ -1,17 +1,17 @@
 #include <iostream>
-#include <cmath>
+#include <vector>
+#include <string>
 int main(){
   int n;
-  double d;
-  std::cin>>n>>d;
-  int ans=0;
+  std::cin>>n;
+  std::vector<int> a(n);
   for(int i=0;i<n;i++){
-    double x,y;
-    std::cin>>x>>y;
-    if(x*x+y*y<=d*d){
-      ans++;
-    }
+    std::cin>>a[i];
   }
-  std::cout<<ans<<'\n';
+  std::string s;
+  std::cin>>s;
+  const int CHAR_MAX=3;
+  const int SET_MAX=1<<4; //2^4 
+  std::cout<<SET_MAX<<'\n';
   return 0;
 }
