@@ -3,6 +3,7 @@
 		"prefix":"main",
 		"body":[
 			"#include <iostream>",
+			"using namespace std;",
 			"int main(){",
 			"\t$1",
 			"\treturn 0;",
