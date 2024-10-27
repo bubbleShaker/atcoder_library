@@ -2,8 +2,9 @@
 	"main":{
 		"prefix":"main",
 		"body":[
-			"#include <iostream>",
+			"#include <bits/stdc++.h>",
 			"using namespace std;",
+			"",
 			"int main(){",
 			"\t$1",
 			"\treturn 0;",
