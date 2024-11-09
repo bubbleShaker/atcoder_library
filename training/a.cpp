@@ -1,49 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
+struct Edge{
+  int to;
+};
+using Graph=vector<vector<Edge>>;
 
-using P=pair<int,int>;
-
-int H,W;
-vector<vector<char>> maze;
-vector<vector<bool>> seen;
-P s,g;
-
-//dfs
-int dx[4]={1,-1,0,0};
-int dy[4]={0,0,1,-1};
-void dfs(P p){
-  seen[p.first][p.second]=true;
-  for(int i=0;i<4;i++){
-    int ny=p.first+dy[i];
-    int nx=p.second+dx[i];
-    if(ny<0||H<=ny||nx<0||W<=nx) continue;
-    if(maze[ny][nx]=='#') continue;
-    if(seen[ny][nx]) continue;
-    dfs(make_pair(ny,nx));
+vector<int> topo_sort(const Graph &G){
+  vector<int> ans;
+  int n=(int)G.size();
+  vector<int> ind(n);
+  for(int i=0;i<n;i++){
+    for(auto e:G[i]){
+      ind[e.to]++;
+    }
   }
-}
-
-int main(){
-  cin>>H>>W;
-  maze.assign(H,vector<char>(W,'.'));
-  for(int i=0;i<H;i++){
-    for(int j=0;j<W;j++){
-      cin>>maze[i][j];
-      if(maze[i][j]=='s'){
-        s=make_pair(i,j);
-      }else if(maze[i][j]=='g'){
-        g=make_pair(i,j);
+  queue<int> que;
+  for(int i=0;i<n;i++){
+    if(ind[i]==0){
+      que.push(i);
+    }
+  }
+  while(!que.empty()){
+    int now=que.front();
+    ans.push_back(now);
+    que.pop();
+    for(auto e:G[now]){
+      ind[e.to]--;
+      if(ind[e.to]==0){
+        que.push(e.to);
       }
     }
   }
-  
-  seen.assign(H,vector<bool>(W,false));
-  dfs(s);
-  
-  if(seen[g.first][g.second]){
-    cout<<"Yes"<<endl;
-  }else{
-    cout<<"No"<<endl;
-  }
-  return 0;
+  return ans;
 }

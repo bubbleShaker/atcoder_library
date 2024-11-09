@@ -2,6 +2,7 @@
 using namespace std;
 
 using Graph=vector<vector<int>>;
+//参考サイト:https://algo-logic.info/dfs/
 
 //深さ優先探索
 vector<bool> seen; //既に見たことがある頂点か記録
