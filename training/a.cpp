@@ -1,35 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
-struct Edge{
-  int to;
-};
-using Graph=vector<vector<Edge>>;
 
-vector<int> topo_sort(const Graph &G){
-  vector<int> ans;
-  int n=(int)G.size();
-  vector<int> ind(n);
-  for(int i=0;i<n;i++){
-    for(auto e:G[i]){
-      ind[e.to]++;
-    }
-  }
+int main(){
+  int q;
+  cin>>q;
+  vector<long long> height(q+1);
+  height[0]=0;
   queue<int> que;
-  for(int i=0;i<n;i++){
-    if(ind[i]==0){
+  for(int i=0;i<q;i++){
+    int t;
+    cin>>t;
+    if(t==1){
+      height[i+1]=height[i];
       que.push(i);
     }
-  }
-  while(!que.empty()){
-    int now=que.front();
-    ans.push_back(now);
-    que.pop();
-    for(auto e:G[now]){
-      ind[e.to]--;
-      if(ind[e.to]==0){
-        que.push(e.to);
+    if(t==2){
+      long long add;
+      cin>>add;
+      height[i+1]=height[i]+add;
+    }
+    if(t==3){
+      height[i+1]=height[i];
+      int h;
+      cin>>h;
+      int ans=0;
+      while(!que.empty()){
+        if(height[i+1]-height[que.front()]>=h){
+          ans++;
+          que.pop();
+        }else{
+          break;
+        }
       }
+      cout<<ans<<endl;
     }
   }
-  return ans;
 }
