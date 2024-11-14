@@ -1,52 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 struct Edge{
-  long long from;
   long long to;
   long long cost;
 };
-using Edges=vector<Edge>;
+using Graph=vector<vector<Edge>>;
 const long long INF=1LL<<60;
 
-bool bellman_ford(const Edges &Es,int V,int s,vector<long long> &dis){
-  dis.resize(V,INF);
-  dis[s]=0;
-  int cnt=0;
-  while(cnt<V){
-    bool end=true;
-    for(auto e:Es){
-      if(dis[e.from]!=INF&&dis[e.from]+e.cost<dis[e.to]){
-        dis[e.to]=dis[e.from]+e.cost;
-        end=false;
-      }
+vector<long long> ct;
+void dfs(const Graph &G,int u){
+  for(auto e:G[u]){
+    if(ct[e.to]==INF){
+      ct[e.to]=ct[u]+e.cost;
+      dfs(G,e.to);
     }
-    if(end) break;
-    cnt++;
   }
-  return (cnt==V);
 }
 
 int main(){
-  int V,E;
-  cin>>V>>E;
-  int r;
-  cin>>r;
-  Edges Eds(E);
-  for(int i=0;i<E;i++){
-    int s,t,d;
-    cin>>s>>t>>d;
-    Eds[i]={s,t,d};
+  int N,M;
+  cin>>N>>M;
+  Graph G(N);
+  for(int i=0;i<M;i++){
+    long long u,v,w;
+    cin>>u>>v>>w;
+    u--;v--;
+    G[u].push_back({v,w});
+    G[v].push_back({u,-w});
   }
-  vector<long long> dis;
-  if(bellman_ford(Eds,V,r,dis)){
-    cout<<"NEGATIVE CICLE"<<endl;
-  }else{
-    for(int i=0;i<V;i++){
-      if(dis[i]==INF){
-        cout<<"INF"<<endl;
-      }else{
-        cout<<dis[i]<<endl;
-      }
+  
+  ct.assign(N,INF);
+  for(int i=0;i<N;i++){
+    if(ct[i]==INF){
+      ct[i]=0;
+      dfs(G,i);
     }
   }
+  
+  for(int i=0;i<N;i++) cout<<ct[i]<<" ";
+  cout<<endl;
+  return 0;
 }
