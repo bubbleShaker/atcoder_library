@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+
 using namespace std;
 
 char flip(char c){
@@ -16,7 +17,7 @@ int main(){
   int q;
   cin>>q;
   for(int i=0;i<q;i++){
-    if(i){cout<<" ";}
+    if(i){cout << " ";}
     long long k;
     cin>>k;
     k--;
@@ -28,6 +29,6 @@ int main(){
     else{
       cout<<s[pt];
     }
-  }cout<<endl;
+  }cout<< "\n";
   return 0;
 }
