@@ -1,42 +1,47 @@
 #include <bits/stdc++.h>
 using namespace std;
 struct Edge{
-  long long to;
-  long long cost;
+  int to;
 };
 using Graph=vector<vector<Edge>>;
-using P=pair<int,int>;
-const long long INF=1LL<<60;
 
-void dijkstra(const Graph &G,int s,vector<long long> &dis,vector<int> &prev){
-  int N=G.size();
-  dis.resize(N,INF);
-  prev.resize(N,-1);
-  dis[s]=0;
-  priority_queue<P,vector<P>,greater<P>> pq;
-  pq.emplace(dis[s],0);
-  while(!pq.empty()){
-    P p=pq.top();
-    pq.pop();
-    int v=p.second;
-    if(dis[v]<p.first){
-      continue;
-    }
-    for(auto &e:G[v]){
-      if(dis[e.to]>dis[v]+e.cost){
-        dis[e.to]=dis[v]+e.cost;
-        prev[e.to]=v;
-        pq.emplace(dis[e.to],e.to);
-      }
+vector<int> cc;
+void dfs(const Graph &G,int v,int id){
+  cc[v]=id;
+  for(auto &e:G[v]){
+    if(!cc[e.to]==-1){
+      dfs(G,e.to,id);
     }
   }
 }
 
-vector<int> get_path(const vector<int> &prev,int t){
-  vector<int> path;
-  for(int cur=t;cur!=-1;cur=prev[cur]){
-    path.push_back(cur);
+int main(){
+  int n,m;
+  cin>>n>>m;
+  Graph G(n);
+  for(int i=0;i<m;i++){
+    int a,b;
+    cin>>a>>b;
+    G[a].push_back({b});
+    G[b].push_back({a});
   }
-  reverse(path.begin(),path.end());
-  return path;
+  cc.assign(n,-1);
+  int id=0;
+  for(int i=0;i<n;i++){
+    if(cc[i]==-1){
+      dfs(G,i,id);
+      id++;
+    }
+  }
+  int q;
+  cin>>q;
+  while(q--){
+    int s,t;
+    cin>>s>>t;
+    if(cc[s]==cc[t]){
+      cout<<"Yes"<<endl;
+    }else{
+      cout<<"No"<<endl;
+    }
+  }
 }
