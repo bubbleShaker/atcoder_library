@@ -1,67 +1,155 @@
 #include <bits/stdc++.h>
-#include <atcoder/all>
 using namespace std;
-using namespace atcoder;
 using ll=long long;
-using P=pair<ll,ll>;
-
-ll dist(P p1,P p2){
-  auto [x1,y1]=p1;
-  auto [x2,y2]=p2;
-  return (x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
-}
 
 int main(){
-  int n;
-  cin>>n;
-  P s,t;
-  cin>>s.first>>s.second>>t.first>>t.second;
-  vector<pair<P,ll>> cir(n);
+  int n,m;
+  ll sx,sy;
+  cin>>n>>m>>sx>>sy;
+  vector<ll> x(n),y(n);
   for(int i=0;i<n;i++){
-    auto &[p,r]=cir[i];
-    auto &[x,y]=p;
-    cin>>x>>y>>r;
+    cin>>x[i]>>y[i];
   }
-  
-  //ufの生成
-  dsu uf(n);
+  vector<char> d(m);
+  vector<ll> c(m);
+  for(int i=0;i<m;i++){
+    cin>>d[i]>>c[i];
+  }
+  map<ll,set<ll>> x_sety_mp;//あるx座標にある家のy座標の集合
+  map<ll,set<ll>> y_setx_mp;//あるy座標にある家のx座標の集合
   for(int i=0;i<n;i++){
-    for(int j=0;j<n;j++){
-      if(i==j)continue;
-      ll r1=cir[i].second;
-      ll r2=cir[j].second;
-      if(dist(cir[i].first,cir[j].first)<=(r1+r2)*(r1+r2)){
-        if(cir[i].second-cir[j].second>=0&&dist(cir[i].first,cir[j].first)>=(cir[i].second-cir[j].second)*(cir[i].second-cir[j].second)){
-          uf.merge(i,j);
+    x_sety_mp[x[i]].insert(y[i]);
+    y_setx_mp[y[i]].insert(x[i]);
+  }
+  ll now_x=sx;
+  ll now_y=sy;
+  ll ans=0;//通過した家の数
+  
+  for(int i=0;i<m;i++){
+    // cout<<"i is "<<i<<endl;
+    // cout<<"now_x is "<<now_x<<endl;
+    // cout<<"now_y is "<<now_y<<endl;
+    // cout<<"ans is "<<ans<<endl;
+    if(d[i]=='U'){
+      set<ll>& st=x_sety_mp[now_x];
+      auto itr=st.lower_bound(now_y);//現在地点よりも大きい最小の家の座標
+      vector<ll> era_vec;//消す家の情報
+      while(itr!=st.end()&&*itr<=now_y+c[i]){//消せる家がある限り見ていく
+        //消す家のx座標、y座標
+        ll era_x=now_x;
+        ll era_y=*itr;
+        ans++;
+        era_vec.push_back(*itr);
+        //もう一方の軸についても情報を更新
+        set<ll>& s_set=y_setx_mp[era_y];
+        if(s_set.count(era_x)){//多分確定で存在するが…
+          s_set.erase(era_x);
         }
-        if(cir[j].second-cir[i].second>=0&&dist(cir[i].first,cir[j].first)>=(cir[j].second-cir[i].second)*(cir[j].second-cir[i].second)){
-          uf.merge(i,j);
+        itr++;//次の家を見る
+      }
+      //家の削除
+      for(auto era:era_vec){
+        st.erase(era);
+      }
+      
+      //座標の更新
+      now_y+=c[i];
+    }
+    
+    if(d[i]=='D'){
+      set<ll>& st=x_sety_mp[now_x];
+      auto itr=st.lower_bound(now_y);//現在地点よりも小さい最大の家の座標
+      vector<ll> era_vec;//消す家の情報
+      if(st.size()>=0&&itr!=st.begin()){//遷移できる家があるならする
+        itr--;
+      }
+      while(itr!=st.end()&&*itr>=now_y-c[i]&&now_y>*itr){//消せる家がある限り見ていく
+        //消す家のx座標、y座標
+        ll era_x=now_x;
+        ll era_y=*itr;
+        ans++;
+        bool is_begin=(itr==st.begin());
+        era_vec.push_back(*itr);
+        //もう一方の軸についても情報を更新
+        set<ll>& s_set=y_setx_mp[era_y];
+        if(s_set.count(era_x)){//多分確定で存在するが…
+          s_set.erase(era_x);
+        }
+        if(is_begin){//今見ているのが最初の要素なら終了
+          break;
+        }else{
+          itr--;//次の家を見る
         }
       }
-    }
-  }
-  
-  //s,tがどの円に乗っているか探索
-  vector<int> s_vec,t_vec;
-  for(int i=0;i<n;i++){
-    if(dist(cir[i].first,s)==cir[i].second*cir[i].second){
-      s_vec.push_back(i);
-    }
-    if(dist(cir[i].first,t)==cir[i].second*cir[i].second){
-      t_vec.push_back(i);
-    }
-  }
-  
-  //s,tが属する円について、同じ連結成分にあるか全探索
-  for(int i=0;i<s_vec.size();i++){
-    for(int j=0;j<t_vec.size();j++){
-      if(uf.leader(s_vec[i])==uf.leader(t_vec[j])){
-        cout<<"Yes"<<endl;
-        return 0;
+      //家の削除
+      for(auto era:era_vec){
+        st.erase(era);
       }
+      
+      //座標の更新
+      now_y-=c[i];
+    }
+    
+    if(d[i]=='L'){
+      set<ll>& st=y_setx_mp[now_y];
+      auto itr=st.lower_bound(now_x);//現在地点よりも小さい最大の家の座標
+      vector<ll> era_vec;//消す家の情報
+      if(st.size()>=0&&itr!=st.begin()){//遷移できる家があるならする
+        itr--;
+      }
+      while(itr!=st.end()&&*itr>=now_x-c[i]&&now_x>*itr){//消せる家がある限り見ていく
+        //消す家のx座標、y座標
+        ll era_x=*itr;
+        ll era_y=now_y;
+        ans++;
+        bool is_begin=(itr==st.begin());
+        era_vec.push_back(*itr);
+        //もう一方の軸についても情報を更新
+        set<ll>& s_set=x_sety_mp[era_x];
+        if(s_set.count(era_y)){//多分確定で存在するが…
+          s_set.erase(era_y);
+        }
+        if(is_begin){//今見ているのが最初の要素なら終了
+          break;
+        }else{
+          itr--;//次の家を見る
+        }
+      }
+      //家の削除
+      for(auto era:era_vec){
+        st.erase(era);
+      }
+      
+      //座標の更新
+      now_x-=c[i];
+    }
+    
+    if(d[i]=='R'){
+      set<ll>& st=y_setx_mp[now_y];
+      auto itr=st.lower_bound(now_x);//現在地点よりも大きい最小の家の座標
+      vector<ll> era_vec;//消す家の情報
+      while(itr!=st.end()&&*itr<=now_x+c[i]){//消せる家がある限り見ていく
+        //消す家のx座標、y座標
+        ll era_x=*itr;
+        ll era_y=now_y;
+        ans++;
+        era_vec.push_back(*itr);
+        //もう一方の軸についても情報を更新
+        set<ll>& s_set=x_sety_mp[era_x];
+        if(s_set.count(era_y)){//多分確定で存在するが…
+          s_set.erase(era_y);
+        }
+        itr++;//次の家を見る
+      }
+      //家の削除
+      for(auto era:era_vec){
+        st.erase(era);
+      }
+      
+      //座標の更新
+      now_x+=c[i];
     }
   }
-  
-  cout<<"No"<<endl;
+  cout<<now_x<<" "<<now_y<<" "<<ans<<endl;
   return 0;
 }
